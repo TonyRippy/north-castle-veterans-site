@@ -30,10 +30,10 @@ To deploy the app to App Engine, run
 
     mvn clean appengine:deploy
 
-After the deploy finishes, you can view your application at
-`https://YOUR_PROJECT.appspot.com`, where `YOUR_PROJECT` is your Google Cloud
-project ID. You can see the new version deployed on the [App Engine section of
-the Google Cloud Console](https://console.cloud.google.com/appengine/versions).
+After the deploy finishes, you can view the application at
+https://north-castle-veterans-site.appspot.com.  You can see the new
+version deployed on the [App Engine section of the Google Cloud
+Console](https://console.cloud.google.com/appengine/versions).
 
 ## Next steps
 
@@ -46,3 +46,9 @@ the Google Cloud Console](https://console.cloud.google.com/appengine/versions).
 ## Contributing changes
 
 * See [CONTRIBUTING.md](CONTRIBUTING.md)
+
+## Licensing
+
+* See [LICENSE](LICENSE)
+
+Java is a registered trademark of Oracle Corporation and/or its affiliates.
