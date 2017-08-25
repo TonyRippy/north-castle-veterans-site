@@ -1,0 +1,6 @@
+indexes:
+
+- kind: Person
+  properties:
+    - name: familyName
+    - name: givenName
