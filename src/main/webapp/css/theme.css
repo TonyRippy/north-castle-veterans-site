@@ -8,7 +8,7 @@
 
 body {
   font-family: 'EB Garamond', serif;
-  font-size: 12px;
+  /* font-size: 12px; */
   /* background: #393324 */
   background-image: url('../images/flag.jpg');
   background-size: cover;
@@ -17,17 +17,16 @@ body {
 body h1 {
     font-size: 36px;
 }
-#sl-header .container_12 {
-  position: relative;
-}
 
 #sl-menu {
   background-color: rgb(100, 200, 200);
+  margin-bottom: 1em;
 }
 
 #sl-menu ul {
-  float: center;
-  margin: 0 20px 0 0;
+  /* float: center; */
+  margin: auto;
+  width: 80%;
   z-index: 2;
 }
 #sl-menu li {
@@ -57,7 +56,7 @@ body h1 {
   color: #000;
   padding-top: 20px;
   padding-bottom: 20px;
-  font-size: 13px;
+  /* font-size: 13px; */
 
   /*
   border-left: 2px solid #000;
@@ -85,47 +84,8 @@ body h1 {
   margin: 10px 30px;
 }
 
-#sl-content p {
+#result {
   margin: 10px 30px;
-}
-
-.inlist {
-  margin-left: 40px;
-  margin-right: 40px;
-}
-
-.sl-event {
-  margin-bottom: 20px;
-}
-
-.sl-event span {
-  margin-left: 30px;
-  display: block;
-}
-
-.sl-event .sl-event-name {
-  font-size: 14px;
-  font-weight: bold;
-}
-
-#sl-footer {
-  margin-top: 10px;
-  color: #888;
-  font-size: 10px;
-}
-
-#sl-footer a {
-  text-decoration: none;
-  color: inherit;
-}
-
-#sl-footer a:hover {
-  text-decoration: underline;
-}
-
-#sl-copy {
-  float: left;
-  margin-left: 50px;
 }
 
 #sl-bkg-attribution {
