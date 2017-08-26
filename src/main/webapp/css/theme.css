@@ -1,0 +1,135 @@
+/* Copyright 2011 Swazi Legacy, Inc. All Rights Reserved.
+ *
+ * Main theme for the Swazi Legacy web site 
+ * Author: trippy@swazilegacy.org (Tony Rippy)
+ */
+
+@import url('https://fonts.googleapis.com/css?family=EB+Garamond');
+
+body {
+  font-family: 'EB Garamond', serif;
+  font-size: 12px;
+  /* background: #393324 */
+  background-image: url('../images/flag.jpg');
+  background-size: cover;
+}
+
+body h1 {
+    font-size: 36px;
+}
+#sl-header .container_12 {
+  position: relative;
+}
+
+#sl-menu {
+  background-color: rgb(100, 200, 200);
+}
+
+#sl-menu ul {
+  float: center;
+  margin: 0 20px 0 0;
+  z-index: 2;
+}
+#sl-menu li {
+  display: inline;
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+  font-variant: small-caps;
+  text-decoration: none;
+}
+#sl-menu li a {
+  text-decoration: inherit;
+  color: inherit;
+}
+#sl-menu li a:hover {
+  text-decoration: inherit;
+  color: #ffcc00;
+}
+#sl-menu .selected {
+  color: #ff6600;
+}
+
+#sl-content {
+  background-color: #fff;
+  margin-bottom: 10px;
+
+  color: #000;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 13px;
+
+  /*
+  border-left: 2px solid #000;
+  border-right: 2px solid #000;
+  border-bottom: 2px solid #000;
+  border-radius: 0 0 20px 20px;
+  -moz-border-radius: 0 0 20px 20px;
+  -webkit-border-radius: 0 0 20px 20px;
+  */
+}
+
+#sl-content h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 20px 20px 10px;
+}
+
+#sl-content h2 {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 10px 30px;
+}
+
+.sl-event ul {
+  margin: 10px 30px;
+}
+
+#sl-content p {
+  margin: 10px 30px;
+}
+
+.inlist {
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.sl-event {
+  margin-bottom: 20px;
+}
+
+.sl-event span {
+  margin-left: 30px;
+  display: block;
+}
+
+.sl-event .sl-event-name {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+#sl-footer {
+  margin-top: 10px;
+  color: #888;
+  font-size: 10px;
+}
+
+#sl-footer a {
+  text-decoration: none;
+  color: inherit;
+}
+
+#sl-footer a:hover {
+  text-decoration: underline;
+}
+
+#sl-copy {
+  float: left;
+  margin-left: 50px;
+}
+
+#sl-bkg-attribution {
+  float: right;
+  text-align: center;
+  margin-right: 50px;
+}
