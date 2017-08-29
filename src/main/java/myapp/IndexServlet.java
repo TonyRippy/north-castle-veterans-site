@@ -20,8 +20,7 @@ public class IndexServlet extends HttpServlet {
 
     StringBuilder json = new StringBuilder("{\"soldiers\":[");
     Query<Entity> query = Query.newEntityQueryBuilder()
-        .setKind("Person")
-        .setOrderBy(OrderBy.asc("familyName"), OrderBy.asc("givenName"))
+        .setKind("Cemetery")
         .build();
     QueryResults<Entity> people = datastore.run(query);
     boolean first = true;
@@ -34,11 +33,10 @@ public class IndexServlet extends HttpServlet {
         }
         json.append("{\"id\": \"")
             .append(person.getKey().getName())
-            .append("\", \"givenName\": \"")
-            .append(person.getString("givenName"))
-            .append("\", \"familyName\": \"")
-            .append(person.getString("familyName"))
-            .append("\"}");
+            .append("\", \"cemeteryName\": \"")
+            .append(person.getString("cemeteryName"))
+            .append("\", \"familyName\": \"\"")
+            .append("}");
     }
     json.append("]}");
     resp.setContentType("application/json");
