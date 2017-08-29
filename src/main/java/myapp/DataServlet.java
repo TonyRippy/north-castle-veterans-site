@@ -20,10 +20,10 @@ public class DataServlet extends HttpServlet {
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
     String name = req.getPathInfo().substring(1); // Remove the leading slash from the path.
     Key key = datastore.newKeyFactory()
-        .setKind("Person")
+        .setKind("Cemetery")
         .newKey(name);
     Query<Entity> query = Query.newEntityQueryBuilder()
-        .setKind("Person")
+        .setKind("Cemetery")
         .setFilter(PropertyFilter.eq("__key__", key))
         .build();
     QueryResults<Entity> results = datastore.run(query);
@@ -33,8 +33,8 @@ public class DataServlet extends HttpServlet {
     }
     Entity person = results.next();
     StringBuilder json = new StringBuilder("{")        
-        .append("\"givenName\": \"")
-        .append(person.getString("givenName"))
+        .append("\"cemeteryName\": \"")
+        .append(person.getString("cemeteryName"))
         .append("\", \"familyName\": \"")
         .append(person.getString("familyName"))
         .append("\"}");

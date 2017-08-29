@@ -1,48 +1,18 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <meta http-equiv="content-language" content="en-US">
-  <meta name="keywords" content="veterans biography geneology">
-  <meta name="description" content="Dedicated to honoring North Castle's deceased veterans.">
-  <title>North Castle War Veterans</title>
-  <link rel="stylesheet" type="text/css" href="css/reset.css">
-  <link rel="stylesheet" type="text/css" href="css/text.css">
-  <link rel="stylesheet" type="text/css" href="css/960.css">
-  <link rel="stylesheet" type="text/css" href="css/theme.css">
-  <style type="text/css">
-  </style>    
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-</head>
-<body>
-  <div id="sl-content" class="container_12">
-    <h1>North Castle War Veterans</h1>
-    <div id="sl-menu">
-      <ul>
-        <li><a>About</a></li>
-        <li><a>Archer Sarles</a></li>
-        <li><a>Methodist</a></li>
-        <li><a>Middle Patent</a></li>
-        <li><a>Old Fisher</a></li>
-        <li><a>St. Stephens</a></li>
-        <li><a>Contact</a></li>
-      </ul>
-    </div>
+<html>
+  <head>
+    <title>App Engine Demo</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  </head>
+  <body>
     <div id="result">Loading...</div>
-    <div id="sl-bkg-attribution">
-      <a href="http://www.usafa.af.mil/News/Photos/igphoto/2001562927/">Background photo</a>
-      provided by the
-      <a href="http://www.usafa.af.mil/">United States Air Force Academy</a>.
-      <!-- TODO: Is there an explicit license for image? -->
-    </div>
-  </div>
 
     <script>
 render = function (soldiers) {
   var out = "<ul>\n";
   for (var i = 0; i < soldiers.length; i++) {
     var soldier = soldiers[i];
-    out += "<li><a href=\"/json/" + soldier.id + "\">" + soldier.familyName + ", " + soldier.givenName + "</li>\n";
+    out += "<li><a href=\"/json/" + soldier.id + "\">" +  soldier.cemeteryName + "</li>\n";
   }
   out += "</ul>";
   return out;
@@ -53,5 +23,5 @@ $(document).ready(function() {
   });
 });
     </script>
-</body>
+  </body>
 </html>
