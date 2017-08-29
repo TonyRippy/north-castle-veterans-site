@@ -1,6 +1,5 @@
 indexes:
 
-- kind: Person
+- kind: Cemetery
   properties:
-    - name: familyName
-    - name: givenName
+    - name: cemeteryName
