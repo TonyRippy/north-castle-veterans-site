@@ -12,13 +12,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class IndexServlet extends HttpServlet {
+public class CemeteriesServlet extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws IOException {
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
 
-    StringBuilder json = new StringBuilder("{\"soldiers\":[");
+    StringBuilder json = new StringBuilder("{\"cemeteries\":[");
     Query<Entity> query = Query.newEntityQueryBuilder()
         .setKind("Cemetery")
         .build();
@@ -33,10 +33,9 @@ public class IndexServlet extends HttpServlet {
         }
         json.append("{\"id\": \"")
             .append(person.getKey().getName())
-            .append("\", \"cemeteryName\": \"")
+            .append("\", \"name\": \"")
             .append(person.getString("cemeteryName"))
-            .append("\", \"familyName\": \"\"")
-            .append("}");
+            .append("\"}");
     }
     json.append("]}");
     resp.setContentType("application/json");

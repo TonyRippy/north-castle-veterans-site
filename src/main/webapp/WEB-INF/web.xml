@@ -9,12 +9,12 @@
         <servlet-class>myapp.DataServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>list</servlet-name>
-        <servlet-class>myapp.IndexServlet</servlet-class>
+        <servlet-name>list-cemeteries</servlet-name>
+        <servlet-class>myapp.CemeteriesServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>list</servlet-name>
-        <url-pattern>/list</url-pattern>
+        <servlet-name>list-cemeteries</servlet-name>
+        <url-pattern>/list/cemeteries</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>data</servlet-name>

@@ -8,18 +8,18 @@
     <div id="result">Loading...</div>
 
     <script>
-render = function (soldiers) {
+render = function (cemeteries) {
   var out = "<ul>\n";
-  for (var i = 0; i < soldiers.length; i++) {
-    var soldier = soldiers[i];
-    out += "<li><a href=\"/json/" + soldier.id + "\">" +  soldier.cemeteryName + "</li>\n";
+  for (var i = 0; i < cemeteries.length; i++) {
+    var cemetery = cemeteries[i];
+    out += "<li><a href=\"/json/" + cemetery.id + "\">" +  cemetery.name + "</li>\n";
   }
   out += "</ul>";
   return out;
 };
 $(document).ready(function() {
-  $.getJSON('/list', function(data) {
-    $('#result').html(render(data.soldiers));
+  $.getJSON('/list/cemeteries', function(data) {
+    $('#result').html(render(data.cemeteries));
   });
 });
     </script>
