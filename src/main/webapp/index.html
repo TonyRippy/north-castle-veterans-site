@@ -12,13 +12,13 @@ render = function (cemeteries) {
   var out = "<ul>\n";
   for (var i = 0; i < cemeteries.length; i++) {
     var cemetery = cemeteries[i];
-    out += "<li><a href=\"/json/" + cemetery.id + "\">" +  cemetery.name + "</li>\n";
+    out += "<li><a href=\"/json/cemetery/" + cemetery.id + "\">" +  cemetery.name + "</li>\n";
   }
   out += "</ul>";
   return out;
 };
 $(document).ready(function() {
-  $.getJSON('/list/cemeteries', function(data) {
+  $.getJSON('/json/cemeteries', function(data) {
     $('#result').html(render(data.cemeteries));
   });
 });

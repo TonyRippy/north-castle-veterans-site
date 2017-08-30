@@ -5,20 +5,20 @@
 
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
     <servlet>
-        <servlet-name>data</servlet-name>
-        <servlet-class>myapp.DataServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>list-cemeteries</servlet-name>
         <servlet-class>myapp.CemeteriesServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>list-veterans-in-cemetery</servlet-name>
+        <servlet-class>myapp.VeteransInCemeteryServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>list-cemeteries</servlet-name>
-        <url-pattern>/list/cemeteries</url-pattern>
+        <url-pattern>/json/cemeteries</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>data</servlet-name>
-        <url-pattern>/json/*</url-pattern>
+        <servlet-name>list-veterans-in-cemetary</servlet-name>
+        <url-pattern>/json/cemetery/*</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
