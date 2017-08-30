@@ -12,7 +12,8 @@
     <link rel="stylesheet" type="text/css" href="css/theme.css">
     <style type="text/css">
     </style>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
   </head>
   <body>
     <div id="sl-content" class="container_12">
@@ -29,6 +30,13 @@
         </ul>
       </div>
       <div id="result">Loading...</div>
+      <script id="template" type="x-tmpl-mustache">
+        <ul>
+          {{#cemeteries}}
+          <li><a href="/json/cemetery/{{id}}">{{name}}</li>
+          {{/cemeteries}}
+        </ul>
+      </script>
       <div id="sl-bkg-attribution">
         <a href="http://www.usafa.af.mil/News/Photos/igphoto/2001562927/">Background photo</a>
         provided by the
@@ -36,22 +44,13 @@
         <!-- TODO: Is there an explicit license for image? -->
       </div>
     </div>
-
-    <script>
-render = function (cemeteries) {
-  var out = "<ul>\n";
-  for (var i = 0; i < cemeteries.length; i++) {
-    var cemetery = cemeteries[i];
-    out += "<li><a href=\"/json/cemetery/" + cemetery.id + "\">" +  cemetery.name + "</li>\n";
-  }
-  out += "</ul>";
-  return out;
-};
+  </body>
+  <script>
 $(document).ready(function() {
   $.getJSON('/json/cemeteries', function(data) {
-    $('#result').html(render(data.cemeteries));
+    var template = $('#template').html();
+    $('#result').html(Mustache.render(template, data));
   });
 });
-    </script>
-  </body>
+  </script>
 </html>

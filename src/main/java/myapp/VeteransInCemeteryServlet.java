@@ -28,7 +28,7 @@ public class VeteransInCemeteryServlet extends HttpServlet {
     Query<Entity> query = Query.newEntityQueryBuilder()
         .setKind("Veteran")
         .setFilter(PropertyFilter.hasAncestor(
-            datastore.newKeyFactory().setKind("Cemetery").newKey(cemeteryId)))
+             datastore.newKeyFactory().setKind("Cemetery").newKey(cemeteryId)))
         .build();
     QueryResults<Entity> veterans = datastore.run(query);
     boolean first = true;
