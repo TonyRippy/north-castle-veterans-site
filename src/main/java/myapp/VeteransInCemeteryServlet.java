@@ -18,12 +18,17 @@ public class VeteransInCemeteryServlet extends HttpServlet {
   public void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws IOException {
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
-    String cemeteryName = req.getPathInfo().substring(1); // Remove the leading slash from the path.
+    String cemeteryId = req.getPathInfo().substring(1); // Remove the leading slash from the path.
 
-    StringBuilder json = new StringBuilder("{\"veterans\":[");
+    StringBuilder json = new StringBuilder("{\"id\":\"")
+        .append(cemeteryId)
+        .append("\",")
+        .append("\"veterans\":[");
+ 
     Query<Entity> query = Query.newEntityQueryBuilder()
         .setKind("Veteran")
-        .setFilter(PropertyFilter.eq("cemeteryName", cemeteryName))
+        .setFilter(PropertyFilter.hasAncestor(
+            datastore.newKeyFactory().setKind("Cemetery").newKey(cemeteryId)))
         .build();
     QueryResults<Entity> veterans = datastore.run(query);
     boolean first = true;
@@ -38,8 +43,6 @@ public class VeteransInCemeteryServlet extends HttpServlet {
             .append(veteran.getKey().getName())
             .append("\", \"name\": \"")
             .append(veteran.getString("givenName"))
-            .append("\", \"cemeteryName\": \"")
-            .append(veteran.getString("cemeteryName"))
             .append("\"}");
     }
     json.append("]}");
