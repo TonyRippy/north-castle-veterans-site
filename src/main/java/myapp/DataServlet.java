@@ -35,8 +35,6 @@ public class DataServlet extends HttpServlet {
     StringBuilder json = new StringBuilder("{")        
         .append("\"cemeteryName\": \"")
         .append(person.getString("cemeteryName"))
-        .append("\", \"familyName\": \"")
-        .append(person.getString("familyName"))
         .append("\"}");
     resp.setContentType("application/json");
     resp.setCharacterEncoding("UTF-8");
