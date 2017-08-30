@@ -17,7 +17,7 @@
         <url-pattern>/json/cemeteries</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>list-veterans-in-cemetary</servlet-name>
+        <servlet-name>list-veterans-in-cemetery</servlet-name>
         <url-pattern>/json/cemetery/*</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
