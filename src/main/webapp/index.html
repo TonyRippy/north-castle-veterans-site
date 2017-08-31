@@ -20,23 +20,23 @@
       <h1>North Castle War Veterans</h1>
       <div id="sl-menu">
         <ul>
-          <li><a>About</a></li>
-          <li><a>Archer Sarles</a></li>
-          <li><a>Methodist</a></li>
-          <li><a>Middle Patent</a></li>
-          <li><a>Old Fisher</a></li>
-          <li><a>St. Stephens</a></li>
-          <li><a>Contact</a></li>
+          <li><a href="/">About</a></li>
+          <li>...</li>
+          <li><a href="/contact.html">Contact</a></li>
         </ul>
       </div>
-      <div id="result">Loading...</div>
-      <script id="template" type="x-tmpl-mustache">
+      <script id="menu-template" type="x-tmpl-mustache">
         <ul>
+          <li><a href="/">About</a></li>
           {{#cemeteries}}
-          <li><a href="/json/cemetery/{{id}}">{{name}}</li>
+          <li><a href="/cemetery.html#{{id}}">{{name}}</li>
           {{/cemeteries}}
+          <li><a href="/contact.html">Contact</a></li>
         </ul>
       </script>
+      <div>
+        TODO: We need to add some welcome text here!!!!
+      </div>
       <div id="sl-bkg-attribution">
         <a href="http://www.usafa.af.mil/News/Photos/igphoto/2001562927/">Background photo</a>
         provided by the
@@ -48,8 +48,8 @@
   <script>
 $(document).ready(function() {
   $.getJSON('/json/cemeteries', function(data) {
-    var template = $('#template').html();
-    $('#result').html(Mustache.render(template, data));
+    var template = $('#menu-template').html();
+    $('#sl-menu').html(Mustache.render(template, data));
   });
 });
   </script>
