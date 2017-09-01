@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class VeteransInCemeteryServlet extends HttpServlet {
+public class CemeteryServlet extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws IOException {
@@ -39,7 +39,9 @@ public class VeteransInCemeteryServlet extends HttpServlet {
         } else {
             json.append(',');
         }
-        json.append("{\"id\": \"")
+        json.append("{\"key\": \"")
+            .append(cemeteryId)
+            .append('/')
             .append(veteran.getKey().getName())
             .append("\", \"name\": \"")
             .append(veteran.getString("givenName"))
