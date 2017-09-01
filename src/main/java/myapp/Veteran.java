@@ -1,5 +1,7 @@
 package myapp;
 
+import static myapp.Config.getDatastore;
+
 import com.google.cloud.datastore.Datastore;
 import com.google.cloud.datastore.DatastoreOptions;
 import com.google.cloud.datastore.Entity;
@@ -48,7 +50,7 @@ public class Veteran {
   }
   
   public boolean readFromDatastore() {
-    Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
+    Datastore datastore = getDatastore();
     Key key = datastore.newKeyFactory()
       .addAncestor(PathElement.of("Cemetery", cemeteryId))
       .setKind("Veteran")

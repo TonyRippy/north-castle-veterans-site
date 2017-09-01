@@ -16,6 +16,10 @@
         <servlet-name>veteran</servlet-name>
         <servlet-class>myapp.VeteranServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>add-cemetery</servlet-name>
+        <servlet-class>myapp.AddCemeteryServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>cemeteries</servlet-name>
         <url-pattern>/json/cemeteries</url-pattern>
@@ -27,6 +31,10 @@
     <servlet-mapping>
         <servlet-name>veteran</servlet-name>
         <url-pattern>/json/veteran/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>add-cemetery</servlet-name>
+        <url-pattern>/_debug/add-cemetery</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
