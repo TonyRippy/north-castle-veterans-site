@@ -34,7 +34,7 @@
         </ul>
       </div>
       <div id="sl-content">
-        TODO: Add contact information.
+        If there are any updates or errors to be noted please contact us at northcastleveterans@gmail.com
       </div>
       <div id="sl-bkg-attribution">
         <a href="http://www.usafa.af.mil/News/Photos/igphoto/2001562927/">Background photo</a>
