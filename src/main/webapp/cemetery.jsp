@@ -2,7 +2,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="myapp.Cemetery" %>
 <%@ page import="myapp.Veteran" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!doctype html>
 <html lang="en">
@@ -37,7 +36,7 @@
           <%
           for (Cemetery c : Cemetery.listAll()) {
           %>
-            <li <c:if test="${c.id == selected.id}"> class="selected" </c:if> >
+            <li <% if(c.id.equals(selected.id)) { %> class="selected" <% } %> >
               <a href="/cemetery/<%= c.id %>">
                 <%= c.name %>
               </a>
