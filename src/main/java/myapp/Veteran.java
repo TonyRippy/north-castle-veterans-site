@@ -15,18 +15,18 @@ import com.google.cloud.datastore.StructuredQuery.PropertyFilter;
 
 
 public class Veteran {
-  final String id;
-  final String cemeteryId;
-  String firstName;
-  String middleName;
-  String lastName;
-  String biography;
-  String references;
-  String born;
-  String died;
-  String eyes;
-  String height;
-  String sex;
+  public final String id;
+  public final String cemeteryId;
+  public String firstName;
+  public String middleName;
+  public String lastName;
+  public String biography;
+  public String references;
+  public String born;
+  public String died;
+  public String eyes;
+  public String height;
+  public String sex;
   
   public Veteran(String id, String cemeteryId) {
     this.id = id;

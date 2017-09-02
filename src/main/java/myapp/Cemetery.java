@@ -17,9 +17,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cemetery {
-  final String id;
-  String name;
-  List<Veteran> veterans;
+  public final String id;
+  public String name;
+  public List<Veteran> veterans;
 
   public Cemetery(String id) {
     this.id = id;

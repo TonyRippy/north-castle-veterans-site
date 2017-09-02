@@ -1,3 +1,7 @@
+<%-- //[START all]--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="myapp.Cemetery" %>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -10,10 +14,6 @@
     <link rel="stylesheet" type="text/css" href="css/text.css">
     <link rel="stylesheet" type="text/css" href="css/960.css">
     <link rel="stylesheet" type="text/css" href="css/theme.css">
-    <style type="text/css">
-    </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
   </head>
   <body>
     <div id="sl-container" class="container_12">
@@ -23,19 +23,18 @@
       <div id="sl-menu">
         <ul>
           <li class="selected"><a href="/">About</a></li>
-          <li>...</li>
-          <li><a href="/contact.html">Contact</a></li>
+          <%
+          for (Cemetery c : Cemetery.listAll()) {
+          %>
+            <li>
+              <a href="/cemetery/<%= c.id %>">
+                <%= c.name %>
+              </a>
+            </li>
+          <% } %>
+          <li><a href="/contact">Contact</a></li>
         </ul>
       </div>
-      <script id="menu-template" type="x-tmpl-mustache">
-        <ul>
-          <li class="selected"><a href="/">About</a></li>
-          {{#cemeteries}}
-          <li><a href="/cemetery.html#{{id}}">{{name}}</a></li>
-          {{/cemeteries}}
-          <li><a href="/contact.html">Contact</a></li>
-        </ul>
-      </script>
       <div id="sl-content">
         <p>
           Welcome to the North Castle Veterans Website Eagle Scout Project!
@@ -55,12 +54,6 @@
       </div>
     </div>
   </body>
-  <script>
-$(document).ready(function() {
-  $.getJSON('/json/cemeteries', function(data) {
-    var template = $('#menu-template').html();
-    $('#sl-menu').html(Mustache.render(template, data));
-  });
-});
-  </script>
 </html>
+
+<%-- //[END all]--%>
