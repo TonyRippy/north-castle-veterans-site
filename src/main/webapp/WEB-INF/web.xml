@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
     <servlet>
-      <servlet-name>cemetery</servlet-name>
+      <servlet-name>view-cemetery</servlet-name>
       <jsp-file>/cemetery.jsp</jsp-file>
     </servlet>
     <servlet>
-        <servlet-name>veteran</servlet-name>
+        <servlet-name>view-veteran</servlet-name>
         <jsp-file>/veteran.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>edit-veteran</servlet-name>
+        <jsp-file>/edit_veteran.jsp</jsp-file>
     </servlet>
     <servlet>
         <servlet-name>contact</servlet-name>
@@ -21,12 +25,16 @@
         <servlet-class>myapp.AddVeteranServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>cemetery</servlet-name>
+        <servlet-name>view-cemetery</servlet-name>
         <url-pattern>/cemetery/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>veteran</servlet-name>
+        <servlet-name>view-veteran</servlet-name>
         <url-pattern>/veteran/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>edit-veteran</servlet-name>
+        <url-pattern>/__edit__/veteran/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>contact</servlet-name>
