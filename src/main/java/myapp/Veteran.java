@@ -17,8 +17,17 @@ import com.google.cloud.datastore.StructuredQuery.PropertyFilter;
 public class Veteran {
   final String id;
   final String cemeteryId;
-  String givenName;
-
+  String firstName;
+  String middleName;
+  String lastName;
+  String biography;
+  String references;
+  String born;
+  String died;
+  String eyes;
+  String height;
+  String sex;
+  
   public Veteran(String id, String cemeteryId) {
     this.id = id;
     this.cemeteryId = cemeteryId;
@@ -47,21 +56,54 @@ public class Veteran {
       .newKey(id);
   }
 
-  boolean readSummary(Entity e) {
-    givenName = e.getString("givenName");
-    return true;
+  private static String getString(Entity e, String propertyName) {
+    if (e.contains(propertyName)) {
+      return e.getString(propertyName);
+    } else {
+      return null;
+    }
   }
   
+  private static void setString(Entity.Builder e, String propertyName, String value) {
+    if (value != null) {
+      e.set(propertyName, value);
+    }
+  }
+  
+  boolean readSummary(Entity e) {
+    firstName = getString(e, "firstName");
+    middleName = getString(e, "middleName");
+    lastName = getString(e, "lastName");
+    return true;
+  }
+
   boolean readFull(Entity e) {
-    givenName = e.getString("givenName");
+    firstName = getString(e, "firstName");
+    middleName = getString(e, "middleName");
+    lastName = getString(e, "lastName");
+    biography = getString(e, "biography");
+    references = getString(e, "references");
+    born = getString(e, "born");
+    died = getString(e, "died");
+    eyes = getString(e, "eyes");
+    height = getString(e, "height");
+    sex = getString(e, "sex");
     return true;
   }
   
   private Entity toEntity(KeyFactory keyFactory) {
-    Key key = buildKey(keyFactory);
-    return Entity.newBuilder(key)
-      .set("givenName", givenName)
-      .build();
+    Entity.Builder e = Entity.newBuilder(buildKey(keyFactory));
+    setString(e, "firstName", firstName);
+    setString(e, "middleName", middleName);
+    setString(e, "lastName", lastName);
+    setString(e, "biography", biography);
+    setString(e, "references", references);
+    setString(e, "born", born);
+    setString(e, "died", died);
+    setString(e, "eyes", eyes);
+    setString(e, "height", height);
+    setString(e, "sex", sex);
+    return e.build();
   }
 
   public boolean readFromDatastore() {

@@ -46,7 +46,11 @@
         Click on a name for more information.
         <ul>
           {{#veterans}}
-          <li><a href="veteran.html#{{cemeteryId}}/{{id}}">{{givenName}}</li>
+          <li>
+            <a href="veteran.html#{{cemeteryId}}/{{id}}">
+              {{lastName}}, {{firstName}} {{middleName}}
+            </a>
+          </li>
           {{/veterans}}
         </ul>
       </script>

@@ -19,7 +19,9 @@ public class AddVeteranServlet extends HttpServlet {
     }
     
     Veteran v = new Veteran("Johnny_Appleseed", "Test");
-    v.givenName = "Johnny Appleseed";
+    v.firstName = "Johnny";
+    v.lastName = "Appleseed";
+    v.biography = "He planted <em>lots</em> of apple trees.";
     v.writeToDatastore();
     
     resp.setContentType("text/plain");
