@@ -4,21 +4,32 @@
  * Author: trippy@swazilegacy.org (Tony Rippy)
  */
 
-@import url('https://fonts.googleapis.com/css?family=EB+Garamond');
+@import url('https://fonts.googleapis.com/css?family=PT+Serif');
 
 body {
-  font-family: 'EB Garamond', serif;
+  font-family: Arial, Helvetica, sans-serif;
   /* font-size: 12px; */
   /* background: #393324 */
   background-image: url('../images/flag.jpg');
   background-size: cover;
 }
 
-body h1 {
-    font-size: 36px;
+#sl-container {
+  background-color: #fff;
+  margin-bottom: 10px;
+  color: #000;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+#sl-header h1 {
+  font-family: 'PT Serif', serif;
+  font-size: x-large;
+  text-align: center;
 }
 
 #sl-menu {
+  font-family: 'PT Serif', serif;
   background-color: rgb(100, 200, 200);
   margin-bottom: 1em;
 }
@@ -43,53 +54,21 @@ body h1 {
 }
 #sl-menu li a:hover {
   text-decoration: inherit;
-  color: #ffcc00;
+  color: #fc0;
 }
 #sl-menu .selected {
-  color: #ff6600;
+  color: #366;
+  pointer-events: none;
+  cursor: default;
 }
 
 #sl-content {
-  background-color: #fff;
-  margin-bottom: 10px;
-
-  color: #000;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  /* font-size: 13px; */
-
-  /*
-  border-left: 2px solid #000;
-  border-right: 2px solid #000;
-  border-bottom: 2px solid #000;
-  border-radius: 0 0 20px 20px;
-  -moz-border-radius: 0 0 20px 20px;
-  -webkit-border-radius: 0 0 20px 20px;
-  */
-}
-
-#sl-content h1 {
-  font-size: 24px;
-  font-weight: bold;
-  margin: 20px 20px 10px;
-}
-
-#sl-content h2 {
-  font-size: 14px;
-  font-weight: bold;
-  margin: 10px 30px;
-}
-
-.sl-event ul {
-  margin: 10px 30px;
-}
-
-#result {
-  margin: 10px 30px;
+  margin: 20px;
 }
 
 #sl-bkg-attribution {
-  float: right;
-  text-align: center;
-  margin-right: 50px;
+  font-size: smaller;
+  text-align: right;
+  margin-top: 60px;
+  margin-right: 30px;
 }

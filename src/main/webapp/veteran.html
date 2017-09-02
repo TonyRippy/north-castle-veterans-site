@@ -39,16 +39,9 @@
       <div id="sl-content">
         Loading...
       </div>
-      <script id="cemetery-template" type="x-tmpl-mustache">
-        <h1>{{name}}</h1>
-        <h2 id="veterans">Veterans</h2>
-        The following is a list of all veterans that were laid to rest at this cemetery.
-        Click on a name for more information.
-        <ul>
-          {{#veterans}}
-          <li><a href="veteran.html#{{cemeteryId}}/{{id}}">{{givenName}}</li>
-          {{/veterans}}
-        </ul>
+      <script id="veteran-template" type="x-tmpl-mustache">
+        <h1>{{givenName}}</h1>
+        TODO
       </script>
       <div id="sl-bkg-attribution">
         <a href="http://www.usafa.af.mil/News/Photos/igphoto/2001562927/">Background photo</a>
@@ -64,11 +57,11 @@ $(document).ready(function() {
     var template = $('#menu-template').html();
     $('#sl-menu').html(Mustache.render(template, data));
   });
-  var cemeteryId = window.location.hash.substr(1);
-  $.getJSON('/json/cemetery/' + cemeteryId, function(data) {
-    var template = $('#cemetery-template').html();
+  var key = window.location.hash.substr(1);
+  $.getJSON('/json/veteran/' + key, function(data) {
+    var template = $('#veteran-template').html();
     $('#sl-content').html(Mustache.render(template, data));
-    $('#menu-' + cemeteryId).addClass('selected');
+    $('#menu-' + data.cemeteryId).addClass('selected');
   });
 });
   </script>

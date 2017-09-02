@@ -16,29 +16,34 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
   </head>
   <body>
-    <div id="sl-content" class="container_12">
-      <h1>North Castle War Veterans</h1>
+    <div id="sl-container" class="container_12">
+      <div id="sl-header">
+        <h1>North Castle War Veterans</h1>
+      </div>
       <div id="sl-menu">
         <ul>
-          <li><a href="/">About</a></li>
+          <li class="selected"><a href="/">About</a></li>
           <li>...</li>
           <li><a href="/contact.html">Contact</a></li>
         </ul>
       </div>
       <script id="menu-template" type="x-tmpl-mustache">
         <ul>
-          <li><a href="/">About</a></li>
+          <li class="selected"><a href="/">About</a></li>
           {{#cemeteries}}
-          <li><a href="/cemetery.html#{{id}}">{{name}}</li>
+          <li><a href="/cemetery.html#{{id}}">{{name}}</a></li>
           {{/cemeteries}}
           <li><a href="/contact.html">Contact</a></li>
         </ul>
       </script>
-      <div>
-        Welcome to the North Castle Veterans Website Eagle Scout Project!
-        The site is currently a work in progress and should be completed in Fall 2017
-        Why this site is in production: Eagle Scout Candidate Jack Skiera wants to contribute to the community by creating a database for veterans that have passed
-        Great Thanks to Tony Rippy for all the time spent to make this project possible
+      <div id="sl-content">
+        <p>
+          Welcome to the North Castle Veterans Website Eagle Scout Project!
+        </p><p>
+          The site is currently a work in progress and should be completed in Fall 2017
+          Why this site is in production: Eagle Scout Candidate Jack Skiera wants to contribute to the community by creating a database for veterans that have passed
+          Great Thanks to Tony Rippy for all the time spent to make this project possible.
+        </p>
       </div>
       <div id="sl-bkg-attribution">
         <a href="http://www.usafa.af.mil/News/Photos/igphoto/2001562927/">Background photo</a>
