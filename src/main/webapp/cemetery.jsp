@@ -55,7 +55,7 @@
         <ul>
           <% for (Veteran v : selected.veterans) { %>
           <li>
-            <a href="veteran/<%= v.cemeteryId %>/<%= v.id %>">
+            <a href="/veteran/<%= v.cemeteryId %>/<%= v.id %>">
               <%= v.lastName == null ? "" : v.lastName %>,
               <%= v.firstName ==null ? "" : v.firstName %>
               <%= v.middleName == null ? "" : v.middleName %>

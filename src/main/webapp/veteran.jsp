@@ -1,6 +1,8 @@
 <%-- //[START all]--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="myapp.Cemetery" %>
 <%@ page import="myapp.Veteran" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!doctype html>
 <html lang="en">
@@ -8,10 +10,10 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta http-equiv="content-language" content="en-US">
     <title>North Castle War Veterans</title>
-    <link rel="stylesheet" type="text/css" href="css/reset.css">
-    <link rel="stylesheet" type="text/css" href="css/text.css">
-    <link rel="stylesheet" type="text/css" href="css/960.css">
-    <link rel="stylesheet" type="text/css" href="css/theme.css">
+    <link rel="stylesheet" type="text/css" href="/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/css/text.css">
+    <link rel="stylesheet" type="text/css" href="/css/960.css">
+    <link rel="stylesheet" type="text/css" href="/css/theme.css">
   </head>
   <body>
     <div id="sl-container" class="container_12">
@@ -50,7 +52,7 @@
           <%= selected.middleName == null ? "" : selected.middleName %>
           <%= selected.lastName %>
         </h1>
-        <%= selected.biography =>
+        <%= selected.biography %>
       </div>
       <div id="sl-bkg-attribution">
         <a href="http://www.usafa.af.mil/News/Photos/igphoto/2001562927/">Background photo</a>
