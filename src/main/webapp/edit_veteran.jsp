@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="/css/text.css">
     <link rel="stylesheet" type="text/css" href="/css/960.css">
     <link rel="stylesheet" type="text/css" href="/css/theme.css">
-    <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=ixuyq1vlmya4hji8r3wn575whswzx0039e8incvhia67yto2"></script>
     <script>
       tinymce.init({
         selector: '#biography',
@@ -37,7 +37,30 @@
         }
         %>
         <form action="/__save__/veteran" method="post">
-          <h2>Name:</h2>
+          <fieldset>
+          <legend>Identification</legend>
+          <p>
+            <label for="newId">Id:</label>
+            <input type="text" id="newId" name="newId"
+              value="<%= v == null || v.id == null ? "" : v.id %>">
+            <input type="hidden" id="oldId" name="oldId"
+              value="<%= v == null || v.id == null ? "" : v.id %>">
+          </p><p>
+            <label for="newCemeteryId">Burial Site:</label>
+            <select id="newCemeteryId" name="newCemeteryId">
+              <% for (Cemetery c : Cemetery.listAll()) { %>
+                <option value="<%= c.id %>"
+                    <% if (c.id.equals(v.cemeteryId)) { %> selected <% } %> >
+                  <%= c.name %>
+                </option>
+              <% } %>
+            </select>
+            <input type="hidden" id="oldCemeteryId" name="oldCemeteryId"
+                   value="<%= v == null || v.cemeteryId == null ? "" : v.cemeteryId %>">
+          </p>
+          </fieldset>
+          <fieldset>
+          <legend>Name:</legend>
           <p>
             <label for="firstName">First Name:</label>
             <input type="text" id="firstName" name="firstName"
@@ -51,10 +74,13 @@
             <input type="text" id="lastName" name="lastName"
               value = "<%= v == null || v.lastName == null ? "" : v.lastName %>">
           </p>
-          <h2>Biography:</h2>
-          <textarea id="biography">
+          </fieldset>
+          <fieldset>
+          <legend>Biography</legend>
+          <textarea id="biography" name="biography">
             <%= v.biography == null ? "" : v.biography %>
           </textarea>
+          </fieldset>
           <input type="submit" value="Save" />
         </form>
       </div>

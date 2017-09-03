@@ -46,18 +46,26 @@
         </ul>
       </div>
       <div id="sl-content">
+        <%-- TODO(trippy): Make this appear only if administrator. --%>
+        <div style="float: right">
+          <a href="<%= "/__edit__/veteran" + request.getPathInfo() %>">
+            Edit this record.
+          </a>
+        </div>
         <h1>
           <%= selected.firstName %>
           <%= selected.middleName == null ? "" : selected.middleName %>
           <%= selected.lastName %>
         </h1>
-        <%= selected.biography %>
+        <div>
+          <%= selected.biography == null ? "" : selected.biography %>
+        </div>
       </div>
       <div id="sl-bkg-attribution">
         <a href="http://www.usafa.af.mil/News/Photos/igphoto/2001562927/">Background photo</a>
         provided by the
         <a href="http://www.usafa.af.mil/">United States Air Force Academy</a>.
-        <!-- TODO: Is there an explicit license for image? -->
+        <%-- TODO: Is there an explicit license for image? --%>
       </div>
     </div>
   </body>

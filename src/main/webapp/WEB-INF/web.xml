@@ -13,6 +13,10 @@
         <jsp-file>/edit_veteran.jsp</jsp-file>
     </servlet>
     <servlet>
+        <servlet-name>save-veteran</servlet-name>
+        <servlet-class>myapp.SaveVeteranServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>contact</servlet-name>
         <jsp-file>/contact.jsp</jsp-file>
     </servlet>
@@ -35,6 +39,10 @@
     <servlet-mapping>
         <servlet-name>edit-veteran</servlet-name>
         <url-pattern>/__edit__/veteran/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>save-veteran</servlet-name>
+        <url-pattern>/__save__/veteran</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>contact</servlet-name>

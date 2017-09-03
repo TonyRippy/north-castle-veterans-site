@@ -15,8 +15,8 @@ import com.google.cloud.datastore.StructuredQuery.PropertyFilter;
 
 
 public class Veteran {
-  public final String id;
-  public final String cemeteryId;
+  public String id;
+  public String cemeteryId;
   public String firstName;
   public String middleName;
   public String lastName;

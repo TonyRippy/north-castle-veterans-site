@@ -33,9 +33,7 @@
       <div id="sl-menu">
         <ul>
           <li><a href="/">About</a></li>
-          <%
-          for (Cemetery c : Cemetery.listAll()) {
-          %>
+          <% for (Cemetery c : Cemetery.listAll()) { %>
             <li <% if(c.id.equals(selected.id)) { %> class="selected" <% } %> >
               <a href="/cemetery/<%= c.id %>">
                 <%= c.name %>
