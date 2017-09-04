@@ -70,7 +70,13 @@ public class SaveVeteranServlet extends HttpServlet {
     v.firstName = s(req, "firstName");
     v.middleName = s(req, "middleName");
     v.lastName = s(req, "lastName");
+    v.born = s(req, "born");
+    v.died = s(req, "died");
+    v.eyes = s(req, "eyes");
+    v.height = s(req, "height");
+    v.sex = s(req, "sex");
     v.biography = s(req, "biography");
+    v.references = s(req, "references");
     v.writeToDatastore();
 
     // Display an animation to let the user know the write succeeded,
@@ -80,7 +86,7 @@ public class SaveVeteranServlet extends HttpServlet {
       .append("<html>")
       .append("<head>")
       // Delayed redirect
-      .append("<meta http-equiv=\"refresh\" content=\"3;")
+      .append("<meta http-equiv=\"refresh\" content=\"2;") // wait 2 seconds
       .append("url=/veteran/").append(newCemeteryId).append('/').append(newId).append("\"/>")
       .append("</head>")
       // Embedded "green check" animation from Giphy
@@ -91,9 +97,10 @@ public class SaveVeteranServlet extends HttpServlet {
       .append(  "height=\"360\" ")
       .append(  "frameBorder=\"0\" ")
       .append(  "class=\"giphy-embed\" ")
+      .append(  "style=\"margin: auto\" ")
       .append(  "allowFullScreen>")
       .append("</iframe>")
-      .append("<p>")
+      .append("<p style=\"font-size: small\">")
       .append("<a href=\"https://giphy.com/gifs/check-8GY3UiUjwKwhO\">via GIPHY</a>")
       .append("</p>")
       .append("</body>")
