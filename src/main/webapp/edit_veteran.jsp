@@ -93,7 +93,7 @@
           </p><p>
             <label for="height">Height:</lablel>
             <input type="text" id="height" name="height"
-              value = "<%= v == null || v.height == null ? "" : v.height %>">
+              value = "<%= v == null || v.height == null ? "" : v.height.replace("\"", "&quot;")  %>">
           </p><p>
             <label for="sex">Sex:</lablel>
             <select id="sex" name="sex">
