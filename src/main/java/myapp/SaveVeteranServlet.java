@@ -21,6 +21,22 @@ public class SaveVeteranServlet extends HttpServlet {
     return value;
   }
 
+  private static Number n(HttpServletRequest request, String parameterName) {
+    String value = request.getParameter(parameterName);
+    if (value == null) {
+      return null;
+    }
+    value = value.trim();
+    if (value.isEmpty()) {
+      return null;
+    }
+    try {
+      return new Long(value);
+    } catch (NumberFormatException e) {
+      return null;
+    }
+  }
+  
   @Override
   public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
     // Create/Load the Veteran object being modified.
@@ -77,6 +93,7 @@ public class SaveVeteranServlet extends HttpServlet {
     v.sex = s(req, "sex");
     v.biography = s(req, "biography");
     v.references = s(req, "references");
+    v.pageNumber = n(req, "pageNumber");
     v.writeToDatastore();
 
     // Display an animation to let the user know the write succeeded,

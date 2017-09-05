@@ -176,7 +176,9 @@
               pasteable text.
             </p>
             <label for="book-page">Page number:</label>
-            <input id="book-page" type="number" min="1" max="133" value="1"></input>                         <div id="book-image"></div>
+            <input id="book-page" name="pageNumber" type="number" min="1" max="133"
+              value="<%= v == null || v.pageNumber == null ? "1" : v.pageNumber.toString() %>">
+            <div id="book-image"></div>
             <p id="book-text"></p>
             </p>
           </div>

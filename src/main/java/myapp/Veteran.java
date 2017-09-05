@@ -27,6 +27,7 @@ public class Veteran {
   public String eyes;
   public String height;
   public String sex;
+  public Number pageNumber;
   
   public Veteran(String id, String cemeteryId) {
     this.id = id;
@@ -73,6 +74,20 @@ public class Veteran {
     }
   }
   
+  private static Number getNumber(Entity e, String propertyName) {
+    if (e.contains(propertyName)) {
+      return new Long(e.getLong(propertyName));
+    } else {
+      return null;
+    }
+  }
+  
+  private static void setNumber(Entity.Builder e, String propertyName, Number value) {
+    if (value != null) {
+      e.set(propertyName, value.longValue());
+    }
+  }
+  
   boolean readSummary(Entity e) {
     firstName = getString(e, "firstName");
     middleName = getString(e, "middleName");
@@ -91,6 +106,7 @@ public class Veteran {
     eyes = getString(e, "eyes");
     height = getString(e, "height");
     sex = getString(e, "sex");
+    pageNumber = getNumber(e, "pageNumber");
     return true;
   }
   
@@ -110,6 +126,7 @@ public class Veteran {
     setString(e, "eyes", eyes);
     setString(e, "height", height);
     setString(e, "sex", sex);
+    setNumber(e, "pageNumber", pageNumber);
     return e.build();
   }
 
