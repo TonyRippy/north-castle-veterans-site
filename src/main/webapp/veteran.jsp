@@ -13,12 +13,28 @@
     <link rel="stylesheet" type="text/css" href="/css/text.css">
     <link rel="stylesheet" type="text/css" href="/css/960.css">
     <link rel="stylesheet" type="text/css" href="/css/theme.css">
+    <style type="text/css">
+      #admin {
+        float: right;
+        padding-right: 20px;
+      }
+      #dates span b {
+        width: 7em;
+      }
+      #stats span {
+        margin-right: 1em;
+      }
+      img {
+        width: 90%;
+      }
+    </style>
   </head>
   <body>
     <div id="sl-container" class="container_12">
-      <div id="sl-header">
+      <div id="sl-header" class="grid_12">
         <h1>North Castle War Veterans</h1>
       </div>
+      <div class="clear"></div>
       <%
       Veteran selected = Veteran.forPath(request.getPathInfo());
       if (selected == null) {
@@ -45,22 +61,61 @@
           <li><a href="/contact">Contact</a></li>
         </ul>
       </div>
-      <div id="sl-content">
+      <div class="clear"></div>
+      <div id="sl-content" class="grid_12">
         <%-- TODO(trippy): Make this appear only if administrator. --%>
-        <div style="float: right">
+        <div id="admin">
           <a href="<%= "/__edit__/veteran" + request.getPathInfo() %>">
             Edit this record.
           </a>
         </div>
-        <h1>
-          <%= selected.firstName %>
-          <%= selected.middleName == null ? "" : selected.middleName %>
-          <%= selected.lastName %>
-        </h1>
-        <div>
-          <%= selected.biography == null ? "" : selected.biography %>
+        <div class="grid_7 alpha">
+          <h1>
+            <%= selected.firstName %>
+            <%= selected.middleName == null ? "" : selected.middleName %>
+            <%= selected.lastName %>
+          </h1>
+          <div id="dates">
+            <% if (selected.born != null) { %>
+            <span>
+              <b>Born:</b> <%= selected.born %><br/>
+            </span>
+            <% } %>
+            <% if (selected.died != null) { %>
+            <span>
+              <b>Died:</b> <%= selected.died %><br/>
+            </span>
+            <% } %>
+          </div>
+          <div id="stats">
+            <% if (selected.sex != null) { %>
+            <span>
+              <b>Sex:</b> <%= selected.sex %>
+            </span>
+            <% } %>
+            <% if (selected.eyes != null) { %>
+            <span>
+              <b>Eyes:</b> <%= selected.eyes %>
+            </span>
+            <% } %>
+            <% if (selected.height != null) { %>
+            <span>
+              <b>Height:</b> <%= selected.height %>
+            </span>
+            <% } %>
+          </div>
+          <p>
+            <%= selected.biography == null ? "" : selected.biography %>
+          </p>
+        </div>
+        <div class="grid_5 omega">
+          <img src="/images/grave.jpg"></img>
+          <p>
+            <%= selected.references == null ? "" : selected.references %>
+          </p>
         </div>
       </div>
+      <div class="clear"></div>
       <div id="sl-bkg-attribution">
         <a href="http://www.usafa.af.mil/News/Photos/igphoto/2001562927/">Background photo</a>
         provided by the
