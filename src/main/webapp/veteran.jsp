@@ -65,6 +65,10 @@
       <div id="sl-content" class="grid_12">
         <%-- TODO(trippy): Make this appear only if administrator. --%>
         <div id="admin">
+          <a href="/__edit__/veteran/<%= selected.cemeteryId %>/">
+            Add new record.
+          </a>
+          <br>
           <a href="<%= "/__edit__/veteran" + request.getPathInfo() %>">
             Edit this record.
           </a>

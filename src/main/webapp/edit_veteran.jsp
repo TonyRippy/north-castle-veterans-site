@@ -37,8 +37,10 @@
         <h1>Edit Veteran</h1>
         <%
         Veteran v = Veteran.forPath(request.getPathInfo());
-        if (v != null) {
-           v.readFromDatastore();
+        if (v == null) {
+          v = new Veteran(null, null);   
+        } else {
+          v.readFromDatastore();
         }
         %>
         <form action="/__save__/veteran" method="post">

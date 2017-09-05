@@ -50,6 +50,9 @@ public class Veteran {
   }
 
   private Key buildKey(KeyFactory keyFactory) {
+    if (id == null || id.isEmpty() || cemeteryId == null || cemeteryId.isEmpty()) {
+      return null;
+    }
     return keyFactory
       .addAncestor(PathElement.of("Cemetery", cemeteryId))
       .setKind("Veteran")
@@ -92,7 +95,11 @@ public class Veteran {
   }
   
   private Entity toEntity(KeyFactory keyFactory) {
-    Entity.Builder e = Entity.newBuilder(buildKey(keyFactory));
+    Key key = buildKey(keyFactory);
+    if (key == null) {
+      return null;
+    }
+    Entity.Builder e = Entity.newBuilder(key);
     setString(e, "firstName", firstName);
     setString(e, "middleName", middleName);
     setString(e, "lastName", lastName);
@@ -109,6 +116,9 @@ public class Veteran {
   public boolean readFromDatastore() {
     Datastore datastore = getDatastore();
     Key key = buildKey(datastore.newKeyFactory());
+    if (key == null) {
+      return false;
+    }
     Query<Entity> query = Query.newEntityQueryBuilder()
       .setKind("Veteran")
       .setFilter(PropertyFilter.eq("__key__", key))
@@ -124,6 +134,9 @@ public class Veteran {
   public boolean writeToDatastore() {
     Datastore datastore = getDatastore();
     Entity entity = toEntity(datastore.newKeyFactory());
+    if (entity == null) {
+      return false;
+    }
     try {
       datastore.put(entity);
       return true;
