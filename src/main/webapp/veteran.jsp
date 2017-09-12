@@ -80,15 +80,29 @@
             <%= selected.lastName %>
           </h1>
           <div id="dates">
-            <% if (selected.born != null) { %>
+            <% if (selected.birthDate != null || selected.birthLocation != null) { %>
             <span>
-              <b>Born:</b> <%= selected.born %><br/>
+              <b>Born:</b>
+              <% if (selected.birthDate != null) { %>
+                <%= selected.birthDate %>
+              <% } %>
+              <% if (selected.birthLocation != null) { %>
+                In <%= selected.birthLocation %>
+              <% } %>
             </span>
+            <br/>
             <% } %>
-            <% if (selected.died != null) { %>
+            <% if (selected.deathDate != null || selected.deathLocation != null) { %>
             <span>
-              <b>Died:</b> <%= selected.died %><br/>
+              <b>Died:</b>
+              <% if (selected.deathDate != null) { %>
+                <%= selected.deathDate %>
+              <% } %>
+              <% if (selected.deathLocation != null) { %>
+                In <%= selected.deathLocation %>
+              <% } %>
             </span>
+            <br/>
             <% } %>
           </div>
           <div id="stats">

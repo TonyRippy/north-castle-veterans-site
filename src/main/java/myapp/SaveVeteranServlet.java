@@ -86,8 +86,10 @@ public class SaveVeteranServlet extends HttpServlet {
     v.firstName = s(req, "firstName");
     v.middleName = s(req, "middleName");
     v.lastName = s(req, "lastName");
-    v.born = s(req, "born");
-    v.died = s(req, "died");
+    v.birthDate = s(req, "birthDate");
+    v.birthLocation = s(req, "birthLocation");
+    v.deathDate = s(req, "deathDate");
+    v.deathLocation = s(req, "deathLocation");
     v.eyes = s(req, "eyes");
     v.height = s(req, "height");
     v.sex = s(req, "sex");

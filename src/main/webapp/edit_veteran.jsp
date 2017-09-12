@@ -125,13 +125,21 @@
           <fieldset>
           <legend>Statistics</legend>
           <p>
-            <label for="born">Born:</lablel>
-            <input type="text" id="born" name="born"
-              value = "<%= v == null || v.born == null ? "" : v.born %>">
+            <label for="birthDate">Born: When?</lablel>
+            <input type="text" id="birthDate" name="birthDate"
+              value = "<%= v == null || v.birthDate == null ? "" : v.birthDate %>">
+            <br/>
+            <label for="birthLocation">Where?</lablel>
+            <input type="text" id="birthLocation" name="birthLocation"
+              value = "<%= v == null || v.birthLocation == null ? "" : v.birthLocation %>">
           </p><p>
-            <label for="died">Died:</lablel>
-            <input type="text" id="died" name="died"
-              value = "<%= v == null || v.died == null ? "" : v.died %>">
+            <label for="deathDate">Died: When?</lablel>
+            <input type="text" id="deathDate" name="deathDate"
+              value = "<%= v == null || v.deathDate == null ? "" : v.deathDate %>">
+            <br/>
+            <label for="deathLocation">Where?</lablel>
+            <input type="text" id="deathLocation" name="deathLocation"
+              value = "<%= v == null || v.deathLocation == null ? "" : v.deathLocation %>">
           </p><p>
             <label for="height">Height:</lablel>
             <input type="text" id="height" name="height"

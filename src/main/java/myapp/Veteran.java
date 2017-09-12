@@ -22,8 +22,10 @@ public class Veteran {
   public String lastName;
   public String biography;
   public String references;
-  public String born;
-  public String died;
+  public String birthDate;
+  public String birthLocation;
+  public String deathDate;
+  public String deathLocation;
   public String eyes;
   public String height;
   public String sex;
@@ -101,8 +103,10 @@ public class Veteran {
     lastName = getString(e, "lastName");
     biography = getString(e, "biography");
     references = getString(e, "references");
-    born = getString(e, "born");
-    died = getString(e, "died");
+    birthDate = getString(e, "birthDate");
+    birthLocation = getString(e, "birthLocation");
+    deathDate = getString(e, "deathDate");
+    deathLocation = getString(e, "deathLocation");
     eyes = getString(e, "eyes");
     height = getString(e, "height");
     sex = getString(e, "sex");
@@ -121,8 +125,10 @@ public class Veteran {
     setString(e, "lastName", lastName);
     setString(e, "biography", biography);
     setString(e, "references", references);
-    setString(e, "born", born);
-    setString(e, "died", died);
+    setString(e, "birthDate", birthDate);
+    setString(e, "birthLocation", birthLocation);
+    setString(e, "deathDate", deathDate);
+    setString(e, "deathLocation", deathLocation);
     setString(e, "eyes", eyes);
     setString(e, "height", height);
     setString(e, "sex", sex);
