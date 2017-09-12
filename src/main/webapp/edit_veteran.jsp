@@ -74,15 +74,51 @@
           Edit Veteran
         </h1>
         <div class="clear"></div>
+        <div id="instructions" class="grid_12 alpha omega">
+          <h2>Instructions</h2>
+          <p>
+            This is a form that will allow you to add or make changes to veterans on the site.
+            The identification fields are required in order for the site to work properly,
+            but all other fields are optional and can be left blank.
+          </p>
+          <p>
+            The general approach should be:
+            <ol>
+              <li>
+                Pick a page out of Pouder's book to the right of the screen.
+                You may have been assigned a page number by the project leader.
+              </li>
+              <li>
+                Verify or record the veteran's identifying information.
+              </li>
+              <li>
+                The best you can, read the scanned text and fill in the additional
+                fields about the veteran. (Birth, death, height, etc.)
+              </li>
+              <li>
+                Correct any typos or errors in the scanned text from the book, and
+                enter it into the <em>Biography</em> section.
+              </li>
+              <li>
+                Add any pointers or links to more information to the <em>References</em> section.
+              </li>
+              <li>
+                Click the "Save" button to update the site!
+              </li>
+            </ol>
+          </p>
+        </div>
+        <div class="clear"></div>
         <%
         Veteran v = Veteran.forPath(request.getPathInfo());
         if (v == null) {
-          v = new Veteran(null, null);   
+          v = new Veteran(null, null);
         } else {
           v.readFromDatastore();
         }
         %>
         <form action="/__save__/veteran" method="post" class="grid_12 alpha omega">
+          <h2>Data Entry</h2>
           <div class="grid_6 alpha">
           <fieldset>
           <legend>Identification</legend>
@@ -177,9 +213,9 @@
           <fieldset>
             <legend>Pouder Book</legend>
             <p>
-              To aid you in entering in records about veterans, we have scanned 
+              To aid you in entering in records about veterans, we have scanned
               and processed George Pouder's book "Soldier, Rest". To use, select
-              a page number below. This will bring up a preview of that page of 
+              a page number below. This will bring up a preview of that page of
               the book, and an attempt to convert the page contents to copy &amp;
               pasteable text.
             </p>
