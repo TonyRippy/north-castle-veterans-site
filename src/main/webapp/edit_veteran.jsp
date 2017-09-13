@@ -234,6 +234,13 @@
           </textarea>
           </fieldset>
           <fieldset>
+          <legend>Images</legend>
+          <%-- TODO: Add ability to preview images. --%>
+          <%-- TODO: Add ability to set multiple images. --%>
+          <input type="text" id="images" name="images" size="100"
+              value = "<%= v == null || v.images == null || v.images.isEmpty() ? "" : v.images.get(0) %>">
+          </fieldset>
+          <fieldset>
           <legend>References</legend>
           <textarea id="references" name="references" class="grid_12 alpha omega">
             <%= v.references == null ? "" : v.references %>
