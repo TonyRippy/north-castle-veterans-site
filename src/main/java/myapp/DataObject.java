@@ -64,7 +64,13 @@ abstract class DataObject<T> {
     List<StringValue> values = e.getList(propertyName);
     ArrayList<String> out = new ArrayList<>(values.size());
     for (StringValue value : values) {
-      out.add(value.get());
+      String s = value.get();
+      if (s != null && !s.isEmpty()) {
+        out.add(s);
+      }
+    }
+    if (out.isEmpty()) {
+      return null;
     }
     return out;
   }
@@ -76,9 +82,14 @@ abstract class DataObject<T> {
     }
     ListValue.Builder builder = ListValue.newBuilder();
     for (String s : list) {
-      builder.addValue(s);
+      if (s != null && !s.isEmpty()) {
+        builder.addValue(s);
+      }
     }
-    e.set(propertyName, builder.build());
+    ListValue value = builder.build();
+    if (!value.get().isEmpty()) {
+      e.set(propertyName, value);
+    }
   }
   
   /**
