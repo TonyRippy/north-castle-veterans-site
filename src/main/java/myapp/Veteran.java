@@ -1,20 +1,12 @@
 package myapp;
 
-import static myapp.Config.getDatastore;
-
-import com.google.cloud.datastore.Datastore;
-import com.google.cloud.datastore.DatastoreException;
-import com.google.cloud.datastore.DatastoreOptions;
 import com.google.cloud.datastore.Entity;
 import com.google.cloud.datastore.Key;
 import com.google.cloud.datastore.KeyFactory;
 import com.google.cloud.datastore.PathElement;
-import com.google.cloud.datastore.Query;
-import com.google.cloud.datastore.QueryResults;
-import com.google.cloud.datastore.StructuredQuery.PropertyFilter;
 
 
-public class Veteran {
+public class Veteran extends DataObject<Veteran> {
   public String id;
   public String cemeteryId;
   public String firstName;
@@ -30,7 +22,7 @@ public class Veteran {
   public String height;
   public String sex;
   public Number pageNumber;
-  
+
   public Veteran(String id, String cemeteryId) {
     this.id = id;
     this.cemeteryId = cemeteryId;
@@ -52,7 +44,13 @@ public class Veteran {
     return new Veteran(veteranId, cemeteryId);
   }
 
-  private Key buildKey(KeyFactory keyFactory) {
+  @Override
+  protected String getKind() {
+    return "Veteran";
+  }
+
+  @Override
+  protected Key buildKey(KeyFactory keyFactory) {
     if (id == null || id.isEmpty() || cemeteryId == null || cemeteryId.isEmpty()) {
       return null;
     }
@@ -62,42 +60,16 @@ public class Veteran {
       .newKey(id);
   }
 
-  private static String getString(Entity e, String propertyName) {
-    if (e.contains(propertyName)) {
-      return e.getString(propertyName);
-    } else {
-      return null;
-    }
-  }
-  
-  private static void setString(Entity.Builder e, String propertyName, String value) {
-    if (value != null) {
-      e.set(propertyName, value);
-    }
-  }
-  
-  private static Number getNumber(Entity e, String propertyName) {
-    if (e.contains(propertyName)) {
-      return new Long(e.getLong(propertyName));
-    } else {
-      return null;
-    }
-  }
-  
-  private static void setNumber(Entity.Builder e, String propertyName, Number value) {
-    if (value != null) {
-      e.set(propertyName, value.longValue());
-    }
-  }
-  
-  boolean readSummary(Entity e) {
+  @Override
+  protected boolean readSummaryFields(Entity e) {
     firstName = getString(e, "firstName");
     middleName = getString(e, "middleName");
     lastName = getString(e, "lastName");
     return true;
   }
 
-  boolean readFull(Entity e) {
+  @Override
+  protected boolean readAllFields(Entity e) {
     firstName = getString(e, "firstName");
     middleName = getString(e, "middleName");
     lastName = getString(e, "lastName");
@@ -113,13 +85,9 @@ public class Veteran {
     pageNumber = getNumber(e, "pageNumber");
     return true;
   }
-  
-  private Entity toEntity(KeyFactory keyFactory) {
-    Key key = buildKey(keyFactory);
-    if (key == null) {
-      return null;
-    }
-    Entity.Builder e = Entity.newBuilder(key);
+
+  @Override
+  protected boolean writeAllFields(Entity.Builder e) {
     setString(e, "firstName", firstName);
     setString(e, "middleName", middleName);
     setString(e, "lastName", lastName);
@@ -133,39 +101,7 @@ public class Veteran {
     setString(e, "height", height);
     setString(e, "sex", sex);
     setNumber(e, "pageNumber", pageNumber);
-    return e.build();
+    return true;
   }
 
-  public boolean readFromDatastore() {
-    Datastore datastore = getDatastore();
-    Key key = buildKey(datastore.newKeyFactory());
-    if (key == null) {
-      return false;
-    }
-    Query<Entity> query = Query.newEntityQueryBuilder()
-      .setKind("Veteran")
-      .setFilter(PropertyFilter.eq("__key__", key))
-      .build();
-    QueryResults<Entity> results = datastore.run(query);
-    if (results.hasNext()) {
-      return readFull(results.next());
-    } else {
-      return false;
-    }
-  }
-
-  public boolean writeToDatastore() {
-    Datastore datastore = getDatastore();
-    Entity entity = toEntity(datastore.newKeyFactory());
-    if (entity == null) {
-      return false;
-    }
-    try {
-      datastore.put(entity);
-      return true;
-    } catch (DatastoreException ex) {
-      // TODO: Log the error?
-      return false;
-    }
-  }
 }

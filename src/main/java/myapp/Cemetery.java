@@ -4,11 +4,9 @@ import static myapp.Config.getDatastore;
 
 import com.google.cloud.datastore.Datastore;
 import com.google.cloud.datastore.DatastoreException;
-import com.google.cloud.datastore.DatastoreOptions;
 import com.google.cloud.datastore.Entity;
 import com.google.cloud.datastore.Key;
 import com.google.cloud.datastore.KeyFactory;
-import com.google.cloud.datastore.PathElement;
 import com.google.cloud.datastore.Query;
 import com.google.cloud.datastore.QueryResults;
 import com.google.cloud.datastore.StructuredQuery.PropertyFilter;
@@ -16,7 +14,7 @@ import com.google.cloud.datastore.StructuredQuery.PropertyFilter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cemetery {
+public class Cemetery extends DataObject<Cemetery> {
   public final String id;
   public String name;
   public List<Veteran> veterans;
@@ -36,66 +34,65 @@ public class Cemetery {
     return new Cemetery(cemeteryId);
   }
 
-  private boolean readSummary(Entity e) {
-    name = e.getString("cemeteryName");
-    return true;
-  }
-  
-  private boolean readFull(Entity e) {
-    name = e.getString("cemeteryName");
-    return true;
+  @Override
+  protected String getKind() {
+    return "Cemetery";
   }
 
-  private Entity toEntity(KeyFactory keyFactory) {
-    Key key = keyFactory.setKind("Cemetery").newKey(id);
-    return Entity.newBuilder(key)
-      .set("cemeteryName", name)
-      .build();
-  }
-
-  public boolean readFromDatastore() {
-    Datastore datastore = getDatastore();
-    Key key = datastore.newKeyFactory()
+  @Override
+  protected Key buildKey(KeyFactory keyFactory) {
+    if (id == null || id.isEmpty()) {
+      return null;
+    }
+    return keyFactory
       .setKind("Cemetery")
       .newKey(id);
-    Query<Entity> query = Query.newEntityQueryBuilder()
-      .setKind("Cemetery")
-      .setFilter(PropertyFilter.eq("__key__", key))
-      .build();
-    QueryResults<Entity> results = datastore.run(query);
-    if (!(results.hasNext() && readFull(results.next()))) {
+  }
+
+  @Override
+  protected boolean readSummaryFields(Entity e) {
+    name = getString(e, "cemeteryName");
+    return true;
+  }
+
+  @Override
+  protected boolean readAllFields(Entity e) {
+    name = getString(e, "cemeteryName");
+    return true;
+  }
+
+  @Override
+  protected boolean writeAllFields(Entity.Builder e) {
+    setString(e, "cemeteryName", name);
+    return true;
+  }
+
+  @Override
+  protected boolean readFromDatastore(Datastore datastore) {
+    // Load this record's fields.
+    if (!super.readFromDatastore(datastore)) {
       return false;
     }
     // Also load the list of veterans that are buried in this cemetery.
-    query = Query.newEntityQueryBuilder()
+    // TODO: This could be factored out into a Veterans.readAllForParent().
+    Query<Entity> query = Query.newEntityQueryBuilder()
       .setKind("Veteran")
       .setFilter(PropertyFilter.hasAncestor(
-           datastore.newKeyFactory().setKind("Cemetery").newKey(id)))
+          buildKey(datastore.newKeyFactory())))
       .build();
-    results = datastore.run(query);
+    QueryResults<Entity> results = datastore.run(query);
     veterans = new ArrayList<>();
     while (results.hasNext()) {
       Entity e = results.next();
       Veteran veteran = new Veteran(e.getKey().getName(), id);
-      if (veteran.readSummary(e)) {
+      if (veteran.readSummaryFields(e)) {
         veterans.add(veteran);
       }
     }
     return true;
   }
 
-  public boolean writeToDatastore() {
-    Datastore datastore = getDatastore();
-    Entity entity = toEntity(datastore.newKeyFactory());
-    try {
-      datastore.put(entity);
-      return true;
-    } catch (DatastoreException ex) {
-      // TODO: Log the error?
-      return false;
-    }
-  }
-  
+  // TODO: Figure out how to move this into DataObject
   public static List<Cemetery> listAll() {
     Datastore datastore = getDatastore();
     Query<Entity> query = Query.newEntityQueryBuilder()
@@ -106,10 +103,11 @@ public class Cemetery {
     while (results.hasNext()) {
       Entity e = results.next();
       Cemetery cemetery = new Cemetery(e.getKey().getName());
-      if (cemetery.readSummary(e)) {
+      if (cemetery.readSummaryFields(e)) {
         all.add(cemetery);
       }
     }
     return all;
   }
+
 }
