@@ -127,7 +127,11 @@
           </p>
         </div>
         <div class="grid_5 omega">
-          <img src="/images/grave.jpg"></img>
+          <% if (selected.images == null) { %>
+            <img src="/images/grave.jpg"></img>
+          <% } else for (String url : selected.images) { %>
+            <img src="<%= url %>"></img>
+          <% } %>  
           <p>
             <%= selected.references == null ? "" : selected.references %>
           </p>
