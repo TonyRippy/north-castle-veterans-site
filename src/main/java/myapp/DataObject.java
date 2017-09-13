@@ -5,11 +5,16 @@ import static myapp.Config.getDatastore;
 import com.google.cloud.datastore.Datastore;
 import com.google.cloud.datastore.DatastoreException;
 import com.google.cloud.datastore.Entity;
+import com.google.cloud.datastore.ListValue;
 import com.google.cloud.datastore.Key;
 import com.google.cloud.datastore.KeyFactory;
 import com.google.cloud.datastore.Query;
 import com.google.cloud.datastore.QueryResults;
+import com.google.cloud.datastore.StringValue;
 import com.google.cloud.datastore.StructuredQuery.PropertyFilter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A Base class for all objects that are read from and written to Google Datastore.
@@ -30,7 +35,7 @@ abstract class DataObject<T> {
 
   /** Saves a string value to a Datastore Entity, omitting nulls or empty strings. */  
   public static void setString(Entity.Builder e, String propertyName, String value) {
-    if (value != null) {
+    if (value != null && !value.isEmpty()) {
       e.set(propertyName, value);
     }
   }
@@ -51,6 +56,31 @@ abstract class DataObject<T> {
     }
   }  
 
+  /** Reads a list of strings from a Datastore entity, treating missing fields as null. */ 
+  public static List<String> getStringList(Entity e, String propertyName) {
+    if (!e.contains(propertyName)) {
+      return null;
+    }
+    List<StringValue> values = e.getList(propertyName);
+    ArrayList<String> out = new ArrayList<>(values.size());
+    for (StringValue value : values) {
+      out.add(value.get());
+    }
+    return out;
+  }
+
+  /** Saves a list of strings to a Datastore Entity, omitting nulls or empty lists. */  
+  public static void setStringList(Entity.Builder e, String propertyName, List<String> list) {
+    if (list == null || list.isEmpty()) {
+      return;
+    }
+    ListValue.Builder builder = ListValue.newBuilder();
+    for (String s : list) {
+      builder.addValue(s);
+    }
+    e.set(propertyName, builder.build());
+  }
+  
   /**
    * Method to create a Datastore Key from the current values.
    * 
