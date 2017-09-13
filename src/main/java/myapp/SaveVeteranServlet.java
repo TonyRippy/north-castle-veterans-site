@@ -6,6 +6,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class SaveVeteranServlet extends HttpServlet {
 
   /** Normalizes a request parameter to null if missing, empty or whitespace. */
@@ -36,7 +39,15 @@ public class SaveVeteranServlet extends HttpServlet {
       return null;
     }
   }
-  
+
+  private static List<String> l(HttpServletRequest request, String parameterName) {
+    String[] value = request.getParameterValues(parameterName);
+    if (value == null) {
+      return null;
+    }
+    return Arrays.asList(value);
+  }
+
   @Override
   public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
     // Create/Load the Veteran object being modified.
@@ -96,10 +107,11 @@ public class SaveVeteranServlet extends HttpServlet {
     v.biography = s(req, "biography");
     v.references = s(req, "references");
     v.pageNumber = n(req, "pageNumber");
+    v.images = l(req, "images");
     v.writeToDatastore();
 
     // Display an animation to let the user know the write succeeded,
-    // then redirect the browser to the veteran's page. 
+    // then redirect the browser to the veteran's page.
     resp.setContentType("text/html");
     resp.getWriter()
       .append("<html>")

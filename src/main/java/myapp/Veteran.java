@@ -5,6 +5,7 @@ import com.google.cloud.datastore.Key;
 import com.google.cloud.datastore.KeyFactory;
 import com.google.cloud.datastore.PathElement;
 
+import java.util.List;
 
 public class Veteran extends DataObject<Veteran> {
   public String id;
@@ -22,6 +23,7 @@ public class Veteran extends DataObject<Veteran> {
   public String height;
   public String sex;
   public Number pageNumber;
+  public List<String> images;
 
   public Veteran(String id, String cemeteryId) {
     this.id = id;
@@ -83,6 +85,7 @@ public class Veteran extends DataObject<Veteran> {
     height = getString(e, "height");
     sex = getString(e, "sex");
     pageNumber = getNumber(e, "pageNumber");
+    images = getStringList(e, "images");
     return true;
   }
 
@@ -101,6 +104,7 @@ public class Veteran extends DataObject<Veteran> {
     setString(e, "height", height);
     setString(e, "sex", sex);
     setNumber(e, "pageNumber", pageNumber);
+    setStringList(e, "images", images);
     return true;
   }
 
