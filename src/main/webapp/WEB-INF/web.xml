@@ -2,11 +2,11 @@
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
     <servlet>
       <servlet-name>view-cemetery</servlet-name>
-      <jsp-file>/cemetery.jsp</jsp-file>
+      <jsp-file>/view_cemetery.jsp</jsp-file>
     </servlet>
     <servlet>
         <servlet-name>view-veteran</servlet-name>
-        <jsp-file>/veteran.jsp</jsp-file>
+        <jsp-file>/view_veteran.jsp</jsp-file>
     </servlet>
     <servlet>
         <servlet-name>edit-veteran</servlet-name>
