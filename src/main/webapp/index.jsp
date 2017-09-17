@@ -22,7 +22,7 @@
       </div>
       <div id="sl-menu">
         <ul>
-          <li class="selected"><a href="/">About</a></li>
+          <li class="selected disabled"><a href="/">About</a></li>
           <%
           for (Cemetery c : Cemetery.listAll()) {
           %>

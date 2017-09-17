@@ -59,6 +59,8 @@ body {
 }
 #sl-menu .selected {
   color: #366;
+}
+#sl-menu .disabled {
   pointer-events: none;
   cursor: default;
 }

@@ -30,7 +30,7 @@
               </a>
             </li>
           <% } %>
-          <li class="selected"><a href="/contact">Contact</a></li>
+          <li class="selected disabled"><a href="/contact">Contact</a></li>
         </ul>
       </div>
       <div id="sl-content">
