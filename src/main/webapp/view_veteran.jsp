@@ -3,6 +3,18 @@
 <%@ page import="myapp.Cemetery" %>
 <%@ page import="myapp.Veteran" %>
 
+<%
+Veteran selected = Veteran.forPath(request.getPathInfo());
+if (selected == null) {
+  response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+  return;
+}
+if (!selected.readFromDatastore()) {
+  response.sendError(HttpServletResponse.SC_NOT_FOUND);
+  return;
+}
+%>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -35,17 +47,6 @@
         <h1>North Castle War Veterans</h1>
       </div>
       <div class="clear"></div>
-      <%
-      Veteran selected = Veteran.forPath(request.getPathInfo());
-      if (selected == null) {
-        response.sendError(HttpServletResponse.SC_BAD_REQUEST);
-        return;
-      }
-      if (!selected.readFromDatastore()) {
-        response.sendError(HttpServletResponse.SC_NOT_FOUND);
-        return;
-      }
-      %>
       <div id="sl-menu">
         <ul>
           <li><a href="/">About</a></li>
