@@ -3,6 +3,15 @@
 <%@ page import="myapp.Cemetery" %>
 <%@ page import="myapp.Veteran" %>
 
+<%
+Veteran v = Veteran.forPath(request.getPathInfo());
+if (v == null) {
+  v = new Veteran(null, null);
+} else {
+  v.readFromDatastore();
+}
+%>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -109,14 +118,6 @@
           </p>
         </div>
         <div class="clear"></div>
-        <%
-        Veteran v = Veteran.forPath(request.getPathInfo());
-        if (v == null) {
-          v = new Veteran(null, null);
-        } else {
-          v.readFromDatastore();
-        }
-        %>
         <form action="/__save__/veteran" method="post" class="grid_12 alpha omega">
           <h2>Data Entry</h2>
           <div class="grid_6 alpha">

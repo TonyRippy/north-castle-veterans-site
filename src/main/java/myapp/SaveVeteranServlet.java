@@ -1,53 +1,11 @@
 package myapp;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import java.util.Arrays;
-import java.util.List;
-
-public class SaveVeteranServlet extends HttpServlet {
-
-  /** Normalizes a request parameter to null if missing, empty or whitespace. */
-  private static String s(HttpServletRequest request, String parameterName) {
-    String value = request.getParameter(parameterName);
-    if (value == null) {
-      return null;
-    }
-    value = value.trim();
-    if (value.isEmpty()) {
-      return null;
-    }
-    return value;
-  }
-
-  private static Number n(HttpServletRequest request, String parameterName) {
-    String value = request.getParameter(parameterName);
-    if (value == null) {
-      return null;
-    }
-    value = value.trim();
-    if (value.isEmpty()) {
-      return null;
-    }
-    try {
-      return new Long(value);
-    } catch (NumberFormatException e) {
-      return null;
-    }
-  }
-
-  private static List<String> l(HttpServletRequest request, String parameterName) {
-    String[] value = request.getParameterValues(parameterName);
-    if (value == null) {
-      return null;
-    }
-    return Arrays.asList(value);
-  }
-
+public class SaveVeteranServlet extends SaveServlet {
   @Override
   public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
     // Create/Load the Veteran object being modified.
@@ -85,7 +43,8 @@ public class SaveVeteranServlet extends HttpServlet {
         // TODO(trippy): Implement a delete method.
         if (newId == null) {
           // No new record, nothing more to do.
-          return;
+            sendSuccessResponse(resp, "/cemetery/" + oldCemeteryId);
+            return;
         }
         // Set the new identifiers, which will result in a new record once saved.
         v.id = newId;
@@ -110,31 +69,7 @@ public class SaveVeteranServlet extends HttpServlet {
     v.images = l(req, "images");
     v.writeToDatastore();
 
-    // Display an animation to let the user know the write succeeded,
-    // then redirect the browser to the veteran's page.
-    resp.setContentType("text/html");
-    resp.getWriter()
-      .append("<html>")
-      .append("<head>")
-      // Delayed redirect
-      .append("<meta http-equiv=\"refresh\" content=\"2;") // wait 2 seconds
-      .append("url=/veteran/").append(newCemeteryId).append('/').append(newId).append("\"/>")
-      .append("</head>")
-      // Embedded "green check" animation from Giphy
-      .append("<body>")
-      .append("<iframe ")
-      .append(  "src=\"https://giphy.com/embed/8GY3UiUjwKwhO\"")
-      .append(  "width=\"480\" ")
-      .append(  "height=\"360\" ")
-      .append(  "frameBorder=\"0\" ")
-      .append(  "class=\"giphy-embed\" ")
-      .append(  "style=\"margin: auto\" ")
-      .append(  "allowFullScreen>")
-      .append("</iframe>")
-      .append("<p style=\"font-size: small\">")
-      .append("<a href=\"https://giphy.com/gifs/check-8GY3UiUjwKwhO\">via GIPHY</a>")
-      .append("</p>")
-      .append("</body>")
-      .append("</html>");
+    // Let the user know the request succeeded, redirect to the view page.
+    sendSuccessResponse(resp, "/veteran/" + newCemeteryId + "/" + newId);
   }
 }

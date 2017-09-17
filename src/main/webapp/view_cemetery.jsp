@@ -3,6 +3,18 @@
 <%@ page import="myapp.Cemetery" %>
 <%@ page import="myapp.Veteran" %>
 
+<%
+Cemetery selected = Cemetery.forPath(request.getPathInfo());
+if (selected == null) {
+  response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+  return;
+}
+if (!selected.readFromDatastore()) {
+  response.sendError(HttpServletResponse.SC_NOT_FOUND);
+  return;
+}
+%>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -13,23 +25,18 @@
     <link rel="stylesheet" type="text/css" href="/css/text.css">
     <link rel="stylesheet" type="text/css" href="/css/960.css">
     <link rel="stylesheet" type="text/css" href="/css/theme.css">
+    <style type="text/css">
+      #admin {
+        float: right;
+        padding-right: 20px;
+      }
+    </style>
   </head>
   <body>
     <div id="sl-container" class="container_12">
       <div id="sl-header">
         <h1>North Castle War Veterans</h1>
       </div>
-      <%
-      Cemetery selected = Cemetery.forPath(request.getPathInfo());
-      if (selected == null) {
-        response.sendError(HttpServletResponse.SC_BAD_REQUEST);
-        return;
-      }
-      if (!selected.readFromDatastore()) {
-        response.sendError(HttpServletResponse.SC_NOT_FOUND);
-        return;
-      }
-      %>
       <div id="sl-menu">
         <ul>
           <li><a href="/">About</a></li>
@@ -44,7 +51,22 @@
         </ul>
       </div>
       <div id="sl-content">
+        <%-- TODO(trippy): Make this appear only if administrator. --%>
+        <div id="admin">
+          <a href="/__edit__/cemetery/">
+            Add new cemetery.
+          </a>
+          <br>
+          <a href="<%= "/__edit__/cemetery" + request.getPathInfo() %>">
+            Edit this cemetery.
+          </a>
+          <br>
+          <a href="/__edit__/veteran/<%= selected.id %>/">
+            Add new veteran to this cemetery.
+          </a>
+        </div>
         <h1><%= selected.name %></h1>
+        <%= selected.description == null ? "" : selected.description %>
         <% if (selected.veterans.size() > 0) { %>
         <h2 id="veterans">Veterans</h2>
         The following is a list of all veterans that were laid to rest at this cemetery.
@@ -54,7 +76,7 @@
           <li>
             <a href="/veteran/<%= v.cemeteryId %>/<%= v.id %>">
               <%= v.lastName == null ? "" : v.lastName %>,
-              <%= v.firstName ==null ? "" : v.firstName %>
+              <%= v.firstName == null ? "" : v.firstName %>
               <%= v.middleName == null ? "" : v.middleName %>
             </a>
           </li>

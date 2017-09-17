@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cemetery extends DataObject<Cemetery> {
-  public final String id;
+  public String id;
   public String name;
   public String description;
   public List<Veteran> veterans;
