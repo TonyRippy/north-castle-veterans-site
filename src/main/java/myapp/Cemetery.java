@@ -17,6 +17,7 @@ import java.util.List;
 public class Cemetery extends DataObject<Cemetery> {
   public final String id;
   public String name;
+  public String description;
   public List<Veteran> veterans;
 
   public Cemetery(String id) {
@@ -58,12 +59,14 @@ public class Cemetery extends DataObject<Cemetery> {
   @Override
   protected boolean readAllFields(Entity e) {
     name = getString(e, "cemeteryName");
+    description = getString(e, "description");
     return true;
   }
 
   @Override
   protected boolean writeAllFields(Entity.Builder e) {
     setString(e, "cemeteryName", name);
+    setString(e, "description", description);
     return true;
   }
 
