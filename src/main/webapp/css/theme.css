@@ -11,7 +11,7 @@ body {
   font-size: 16px;
   /* background: #393324 */
   background-image: url('../images/flag.jpg');
-  background-size: cover;
+  background-size: auto;
 }
 
 #sl-container {
