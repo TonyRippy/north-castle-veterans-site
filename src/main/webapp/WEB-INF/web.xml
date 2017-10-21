@@ -28,6 +28,10 @@
         <servlet-name>contact</servlet-name>
         <jsp-file>/contact.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>thanks</servlet-name>
+        <jsp-file>/thanks.jsp</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>view-cemetery</servlet-name>
         <url-pattern>/cemetery/*</url-pattern>
@@ -51,6 +55,10 @@
     <servlet-mapping>
         <servlet-name>save-veteran</servlet-name>
         <url-pattern>/__save__/veteran</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>thanks</servlet-name>
+        <url-pattern>/thanks</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>contact</servlet-name>

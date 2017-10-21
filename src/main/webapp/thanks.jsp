@@ -7,8 +7,6 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta http-equiv="content-language" content="en-US">
-    <meta name="keywords" content="veterans biography geneology">
-    <meta name="description" content="Dedicated to honoring North Castle's deceased veterans.">
     <title>North Castle War Veterans</title>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"> 
     <link rel="stylesheet" type="text/css" href="/css/reset.css">
@@ -23,7 +21,7 @@
       </div>
       <div id="sl-menu">
         <ul>
-          <li class="selected disabled"><a href="/">About</a></li>
+          <li><a href="/">About</a></li>
           <%
           for (Cemetery c : Cemetery.listAll()) {
           %>
@@ -33,25 +31,24 @@
               </a>
             </li>
           <% } %>
-          <li><a href="/contact">Contact</a></li>
+          <li class="selected disabled"><a href="/contact">Contact</a></li>
         </ul>
       </div>
       <div id="sl-content">
         <p>
-          Welcome to the North Castle Veterans Website Eagle Scout Project!
-        </p><p>
-          The site is currently a work in progress and should be completed in Fall 2017.
-        </p><p>
-          Why this site is in production: Eagle Scout Candidate Jack Skiera wants to contribute to the community by creating a database for veterans that have passed.
-        </p><p>
-          Great Thanks to Tony Rippy for all the time spent to make this project possible!
+        This website was made possible by many hours of volunteer work and the kindness of others.
+        In particular, we would like to recognize several individuals and organizations for their support.
         </p>
-      </div>
-      <div id="sl-bkg-attribution">
-        <a href="http://www.usafa.af.mil/News/Photos/igphoto/2001562927/">Background photo</a>
-        provided by the
-        <a href="http://www.usafa.af.mil/">United States Air Force Academy</a>.
-        <!-- TODO: Is there an explicit license for image? -->
+        <h1>Contributors</h1>
+        <p>TODO</p>
+        <h1>Services</h1>
+        <p>TODO</p>
+        <h1>Images</h1>
+        The site's <a href="http://www.usafa.af.mil/News/Photos/igphoto/2001562927/">background photo</a>
+        was made publicly available by the <a href="http://www.usafa.af.mil/">United States Air Force Academy</a>.
+        The flag icon used in the URL bar was originally provided by
+        <a href="https://openclipart.org/detail/193886/United%20States%20Flag">Open Clip Art</a>, and converted to an icon by
+        <a href="https://www.freefavicon.com/freefavicons/flags/iconinfo/united-states-flag-152-193886.html">Free Favicon</a>.
       </div>
     </div>
   </body>

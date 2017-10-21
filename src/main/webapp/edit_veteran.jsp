@@ -18,6 +18,7 @@ if (v == null) {
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta http-equiv="content-language" content="en-US">
     <title>North Castle War Veterans</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"> 
     <link rel="stylesheet" type="text/css" href="/css/reset.css">
     <link rel="stylesheet" type="text/css" href="/css/text.css">
     <link rel="stylesheet" type="text/css" href="/css/960.css">
