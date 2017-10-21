@@ -44,7 +44,9 @@
         </p><p>
           Why this site is in production: Eagle Scout Candidate Jack Skiera wants to contribute to the community by creating a database for veterans that have passed.
         </p><p>
-          Great Thanks to Tony Rippy for all the time spent to make this project possible!
+          This website was made possible though hours of volunteer work and the
+          contributions of many individuals and organizations.
+          We would like to <a href="/thanks">recognize their contributions here</a>.
         </p>
       </div>
       <div id="sl-bkg-attribution">
