@@ -35,9 +35,26 @@ abstract class DataObject<T> {
 
   /** Saves a string value to a Datastore Entity, omitting nulls or empty strings. */  
   public static void setString(Entity.Builder e, String propertyName, String value) {
+    setString(e, propertyName, value, true);
+  }
+
+  public static void setString(Entity.Builder e, String propertyName, String value, boolean index) {
     if (value != null && !value.isEmpty()) {
-      e.set(propertyName, value);
+      StringValue v = StringValue.newBuilder(value)
+        .setExcludeFromIndexes(!index)
+        .build();
+      e.set(propertyName, v);
     }
+  }
+
+  /** Reads a text field from a Datastore entity, treating missing fields as null. */ 
+  public static String getText(Entity e, String propertyName) {
+    return getString(e, propertyName);
+  }
+
+  /** Saves a text field to a Datastore entity, omitting nulls or empty strings. */
+  public static void setText(Entity.Builder e, String propertyName, String value) {
+    setString(e, propertyName, value, false);
   }
   
   /** Reads a numeric value from a Datastore entity, treating missing fields as null. */ 

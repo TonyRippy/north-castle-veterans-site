@@ -75,8 +75,8 @@ public class Veteran extends DataObject<Veteran> {
     firstName = getString(e, "firstName");
     middleName = getString(e, "middleName");
     lastName = getString(e, "lastName");
-    biography = getString(e, "biography");
-    references = getString(e, "references");
+    biography = getText(e, "biography");
+    references = getText(e, "references");
     birthDate = getString(e, "birthDate");
     birthLocation = getString(e, "birthLocation");
     deathDate = getString(e, "deathDate");
@@ -94,8 +94,8 @@ public class Veteran extends DataObject<Veteran> {
     setString(e, "firstName", firstName);
     setString(e, "middleName", middleName);
     setString(e, "lastName", lastName);
-    setString(e, "biography", biography);
-    setString(e, "references", references);
+    setText(e, "biography", biography);
+    setText(e, "references", references);
     setString(e, "birthDate", birthDate);
     setString(e, "birthLocation", birthLocation);
     setString(e, "deathDate", deathDate);

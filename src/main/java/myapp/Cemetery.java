@@ -59,14 +59,14 @@ public class Cemetery extends DataObject<Cemetery> {
   @Override
   protected boolean readAllFields(Entity e) {
     name = getString(e, "cemeteryName");
-    description = getString(e, "description");
+    description = getText(e, "description");
     return true;
   }
 
   @Override
   protected boolean writeAllFields(Entity.Builder e) {
     setString(e, "cemeteryName", name);
-    setString(e, "description", description);
+    setText(e, "description", description);
     return true;
   }
 
