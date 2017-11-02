@@ -1,9 +1,5 @@
 indexes:
 
-- kind: Cemetery
-  properties:
-    - name: cemeteryName
-
 - kind: Veteran
   properties:
     - name: lastName
