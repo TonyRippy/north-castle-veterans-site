@@ -1,20 +1,21 @@
 <%-- //[START all]--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="myapp.Cemetery" %>
+<%@ page import="myapp.Veteran" %>
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta http-equiv="content-language" content="en-US">
-    <meta name="keywords" content="veterans biography geneology">
-    <meta name="description" content="Dedicated to honoring North Castle's deceased veterans.">
     <title>North Castle War Veterans</title>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"> 
     <link rel="stylesheet" type="text/css" href="/css/reset.css">
     <link rel="stylesheet" type="text/css" href="/css/text.css">
     <link rel="stylesheet" type="text/css" href="/css/960.css">
     <link rel="stylesheet" type="text/css" href="/css/theme.css">
+    <style type="text/css">
+    </style>
   </head>
   <body>
     <div id="sl-container" class="container_12">
@@ -23,10 +24,8 @@
       </div>
       <div id="sl-menu">
         <ul>
-          <li class="selected disabled"><a href="/">About</a></li>
-          <%
-          for (Cemetery c : Cemetery.listAll()) {
-          %>
+          <li><a href="/">About</a></li>
+          <% for (Cemetery c : Cemetery.listAll()) { %>
             <li>
               <a href="/cemetery/<%= c.id %>">
                 <%= c.name %>
@@ -37,18 +36,20 @@
         </ul>
       </div>
       <div id="sl-content">
-        <p>
-          Welcome to the North Castle Veterans Website Eagle Scout Project!
-        </p><p>
-          The site is currently a work in progress and should be completed in Fall 2017.
-        </p><p>
-          Why this site is in production: Eagle Scout Candidate Jack Skiera wants to contribute to the community by creating a database for veterans that have passed.
-          A list of all veterans on the site can be found <a href="/all">here</a>.
-        </p><p>
-          This website was made possible though hours of volunteer work and the
-          contributions of many individuals and organizations.
-          We would like to <a href="/thanks">recognize their contributions here</a>.
-        </p>
+        <h1>Veterans</h1>
+        The following is a list of all veterans available on the site, listed alphabetically.
+        Click on a name for more information.
+        <ul>
+          <% for (Veteran v : Veteran.listAll()) { %>
+          <li>
+            <a href="/veteran/<%= v.cemeteryId %>/<%= v.id %>">
+              <%= v.lastName == null ? "" : v.lastName %>,
+              <%= v.firstName == null ? "" : v.firstName %>
+              <%= v.middleName == null ? "" : v.middleName %>
+            </a>
+          </li>
+          <% } %>
+        </ul>
       </div>
       <div id="sl-bkg-attribution">
         <a href="http://www.usafa.af.mil/News/Photos/igphoto/2001562927/">Background photo</a>

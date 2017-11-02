@@ -1,13 +1,22 @@
 package myapp;
 
+import static myapp.Config.getDatastore;
+import static com.google.cloud.datastore.StructuredQuery.OrderBy.asc;
+
+import com.google.cloud.datastore.Datastore;
 import com.google.cloud.datastore.Entity;
 import com.google.cloud.datastore.Key;
 import com.google.cloud.datastore.KeyFactory;
 import com.google.cloud.datastore.PathElement;
+import com.google.cloud.datastore.Query;
+import com.google.cloud.datastore.QueryResults;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Veteran extends DataObject<Veteran> {
+  public static final String KIND = "Veteran";
+  
   public String id;
   public String cemeteryId;
   public String firstName;
@@ -48,7 +57,7 @@ public class Veteran extends DataObject<Veteran> {
 
   @Override
   protected String getKind() {
-    return "Veteran";
+    return KIND;
   }
 
   @Override
@@ -58,7 +67,7 @@ public class Veteran extends DataObject<Veteran> {
     }
     return keyFactory
       .addAncestor(PathElement.of("Cemetery", cemeteryId))
-      .setKind("Veteran")
+      .setKind(KIND)
       .newKey(id);
   }
 
@@ -106,6 +115,35 @@ public class Veteran extends DataObject<Veteran> {
     setNumber(e, "pageNumber", pageNumber);
     setStringList(e, "images", images);
     return true;
+  }
+
+  // TODO: Figure out how to move this into DataObject
+  public static List<Veteran> listAll() {
+    Datastore datastore = getDatastore();
+    Query<Entity> query = Query.newEntityQueryBuilder()
+        .setKind(KIND)
+        .setOrderBy(asc("lastName"), asc("firstName"))
+        .build();
+    QueryResults<Entity> results = datastore.run(query);
+    List<Veteran> all = new ArrayList<>();
+    while (results.hasNext()) {
+      Entity e = results.next();
+      String id = e.getKey().getName();
+      List<PathElement> ancestors = e.getKey().getAncestors();
+      if (ancestors.size() != 1) {
+        throw new RuntimeException("Unexpected number of ancestors: " + e.getKey().toString());
+      }
+      PathElement ancestor = ancestors.get(0);
+      if (!ancestor.getKind().equals(Cemetery.KIND)) {
+        throw new RuntimeException("Encountered ancestor that isn't a Cemetery: " + ancestor.toString());
+      }
+      String cemeteryId = ancestor.getName();
+      Veteran veteran = new Veteran(id, cemeteryId);
+      if (veteran.readSummaryFields(e)) {
+        all.add(veteran);
+      }
+    }
+    return all;
   }
 
 }

@@ -13,6 +13,10 @@
       <servlet-class>myapp.SaveCemeteryServlet</servlet-class>
     </servlet>
     <servlet>
+      <servlet-name>list-veterans</servlet-name>
+      <jsp-file>/list_veterans.jsp</jsp-file>
+    </servlet>
+    <servlet>
         <servlet-name>view-veteran</servlet-name>
         <jsp-file>/view_veteran.jsp</jsp-file>
     </servlet>
@@ -43,6 +47,14 @@
     <servlet-mapping>
         <servlet-name>save-cemetery</servlet-name>
         <url-pattern>/__save__/cemetery</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>list-veterans</servlet-name>
+        <url-pattern>/all</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>list-veterans</servlet-name>
+        <url-pattern>/veterans</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>view-veteran</servlet-name>

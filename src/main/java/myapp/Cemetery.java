@@ -1,6 +1,7 @@
 package myapp;
 
 import static myapp.Config.getDatastore;
+import static com.google.cloud.datastore.StructuredQuery.OrderBy.asc;
 
 import com.google.cloud.datastore.Datastore;
 import com.google.cloud.datastore.DatastoreException;
@@ -15,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cemetery extends DataObject<Cemetery> {
+  public static final String KIND = "Cemetery";
+  
   public String id;
   public String name;
   public String description;
@@ -37,7 +40,7 @@ public class Cemetery extends DataObject<Cemetery> {
 
   @Override
   protected String getKind() {
-    return "Cemetery";
+    return KIND;
   }
 
   @Override
@@ -46,7 +49,7 @@ public class Cemetery extends DataObject<Cemetery> {
       return null;
     }
     return keyFactory
-      .setKind("Cemetery")
+      .setKind(KIND)
       .newKey(id);
   }
 
@@ -82,6 +85,7 @@ public class Cemetery extends DataObject<Cemetery> {
       .setKind("Veteran")
       .setFilter(PropertyFilter.hasAncestor(
           buildKey(datastore.newKeyFactory())))
+      .setOrderBy(asc("lastName"), asc("firstName"))
       .build();
     QueryResults<Entity> results = datastore.run(query);
     veterans = new ArrayList<>();
@@ -99,7 +103,8 @@ public class Cemetery extends DataObject<Cemetery> {
   public static List<Cemetery> listAll() {
     Datastore datastore = getDatastore();
     Query<Entity> query = Query.newEntityQueryBuilder()
-        .setKind("Cemetery")
+        .setKind(KIND)
+        .setOrderBy(asc("cemeteryName"))
         .build();
     QueryResults<Entity> results = datastore.run(query);
     List<Cemetery> all = new ArrayList<>();
