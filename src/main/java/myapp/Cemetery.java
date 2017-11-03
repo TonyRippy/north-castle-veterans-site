@@ -21,6 +21,7 @@ public class Cemetery extends DataObject<Cemetery> {
   public String id;
   public String name;
   public String description;
+  public String image;
   public List<Veteran> veterans;
 
   public Cemetery(String id) {
@@ -63,6 +64,7 @@ public class Cemetery extends DataObject<Cemetery> {
   protected boolean readAllFields(Entity e) {
     name = getString(e, "cemeteryName");
     description = getText(e, "description");
+    image = getString(e, "image");
     return true;
   }
 
@@ -70,6 +72,7 @@ public class Cemetery extends DataObject<Cemetery> {
   protected boolean writeAllFields(Entity.Builder e) {
     setString(e, "cemeteryName", name);
     setText(e, "description", description);
+    setString(e, "image", image, false);
     return true;
   }
 

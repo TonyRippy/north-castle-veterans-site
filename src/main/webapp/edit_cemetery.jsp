@@ -66,6 +66,11 @@ if (c == null) {
           </p>
           </fieldset>
           <fieldset>
+          <legend>Image</legend>
+          <input type="text" id="image" name="image" size="100"
+              value = "<%= c == null || c.image == null ? "" : c.image %>">
+          </fieldset>
+          <fieldset>
           <legend>Description</legend>
           <textarea id="description" name="description">
             <%= c.description == null ? "" : c.description %>

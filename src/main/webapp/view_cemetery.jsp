@@ -21,7 +21,7 @@ if (!selected.readFromDatastore()) {
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta http-equiv="content-language" content="en-US">
     <title>North Castle War Veterans</title>
-    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"> 
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" type="text/css" href="/css/reset.css">
     <link rel="stylesheet" type="text/css" href="/css/text.css">
     <link rel="stylesheet" type="text/css" href="/css/960.css">
@@ -46,7 +46,7 @@ if (!selected.readFromDatastore()) {
           <li><a href="/contact">Contact</a></li>
         </ul>
       </div>
-      <div id="sl-content">
+      <div id="sl-content" class="grid_12">
         <%-- TODO(trippy): Make this appear only if administrator. --%>
         <div id="admin">
           <a href="/__edit__/cemetery/">
@@ -64,25 +64,33 @@ if (!selected.readFromDatastore()) {
         <div id="sl-navlink">
           <a href="/cemeteries"><b>&larr;</b> Back to Cemeteries</a>
         </div>
-        <h1><%= selected.name %> Cemetery</h1>
-        <%= selected.description == null ? "" : selected.description %>
-        <% if (selected.veterans.size() > 0) { %>
-        <h2 id="veterans">Veterans</h2>
-        The following is a list of all veterans that were laid to rest at this cemetery.
-        Click on a name for more information.
-        <ul>
-          <% for (Veteran v : selected.veterans) { %>
-          <li>
-            <a href="/veteran/<%= v.cemeteryId %>/<%= v.id %>">
-              <%= v.lastName == null ? "" : v.lastName %>,
-              <%= v.firstName == null ? "" : v.firstName %>
-              <%= v.middleName == null ? "" : v.middleName %>
-            </a>
-          </li>
+        <div class="grid_7 alpha">
+          <h1><%= selected.name %> Cemetery</h1>
+          <%= selected.description == null ? "" : selected.description %>
+          <% if (selected.veterans.size() > 0) { %>
+          <h2 id="veterans">Veterans</h2>
+          The following is a list of all veterans that were laid to rest at this cemetery.
+          Click on a name for more information.
+          <ul>
+            <% for (Veteran v : selected.veterans) { %>
+            <li>
+              <a href="/veteran/<%= v.cemeteryId %>/<%= v.id %>">
+                <%= v.lastName == null ? "" : v.lastName %>,
+                <%= v.firstName == null ? "" : v.firstName %>
+                <%= v.middleName == null ? "" : v.middleName %>
+              </a>
+            </li>
+            <% } %>
+          </ul>
           <% } %>
-        </ul>
-        <% } %>
+        </div>
+        <div class="grid_5 omega">
+          <% if (selected.image != null) { %>
+          <img src="<%= selected.image %>"></img>
+          <% } %>
+        </div>
       </div>
+      <div class="clear"></div>
       <div id="sl-bkg-attribution">
         <a href="http://www.usafa.af.mil/News/Photos/igphoto/2001562927/">Background photo</a>
         provided by the

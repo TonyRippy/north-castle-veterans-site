@@ -43,6 +43,7 @@ public class SaveCemeteryServlet extends SaveServlet {
     // Read the rest of the fields and save the record.
     c.name = s(req, "name");
     c.description = s(req, "description");
+    c.image = s(req, "image");
     c.writeToDatastore();
 
     // Let the user know the request succeeded, redirect to the view page.
