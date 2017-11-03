@@ -1,6 +1,12 @@
 <%-- //[START all]--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="myapp.Cemetery" %>
+<%@ page import="com.google.appengine.api.users.UserService" %>
+<%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
+
+<%
+UserService userService = UserServiceFactory.getUserService();
+%>
 
 <!doctype html>
 <html lang="en">
@@ -14,6 +20,10 @@
     <link rel="stylesheet" type="text/css" href="/css/960.css">
     <link rel="stylesheet" type="text/css" href="/css/theme.css">
     <style type="text/css">
+      #admin {
+        float: right;
+        padding-right: 20px;
+      }
     </style>
   </head>
   <body>
@@ -30,6 +40,13 @@
         </ul>
       </div>
       <div id="sl-content">
+        <% if (userService.isUserLoggedIn() && userService.isUserAdmin()) { %>
+        <div id="admin">
+          <a href="/__edit__/cemetery/">
+            Add new cemetery.
+          </a>
+        </div>
+        <% } %>
         <h1>Cemeteries</h1>
         The following is a list of local cemeteries where veterans have been
         laid to rest in the town of North Castle, listed alphabetically.

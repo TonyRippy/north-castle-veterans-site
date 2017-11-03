@@ -55,10 +55,6 @@ UserService userService = UserServiceFactory.getUserService();
       <div id="sl-content" class="grid_12">
         <% if (userService.isUserLoggedIn() && userService.isUserAdmin()) { %>
         <div id="admin">
-          <a href="/__edit__/cemetery/">
-            Add new cemetery.
-          </a>
-          <br>
           <a href="<%= "/__edit__/cemetery" + request.getPathInfo() %>">
             Edit this cemetery.
           </a>
