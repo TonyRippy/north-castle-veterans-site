@@ -65,7 +65,7 @@ if (!selected.readFromDatastore()) {
           <a href="/cemeteries"><b>&larr;</b> Back to Cemeteries</a>
         </div>
         <div class="grid_7 alpha">
-          <h1><%= selected.name %> Cemetery</h1>
+          <h1><%= selected.name %></h1>
           <%= selected.description == null ? "" : selected.description %>
           <% if (selected.veterans.size() > 0) { %>
           <h2 id="veterans">Veterans</h2>

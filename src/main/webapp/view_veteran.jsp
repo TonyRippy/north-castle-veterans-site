@@ -74,7 +74,7 @@ if (!cemetery.readFromDatastore()) {
           </a>
         </div>
         <div id="sl-navlink">
-          <a href="/cemetery/<%= cemetery.id %>"><b>&larr;</b> <%= cemetery.name %> Cemetery</a>
+          <a href="/cemetery/<%= cemetery.id %>"><b>&larr;</b> <%= cemetery.name %></a>
         </div>
         <div class="grid_7 alpha">
           <h1>
