@@ -49,10 +49,10 @@ UserService userService = UserServiceFactory.getUserService();
         width: 90%;
       }
     </style>
-    <!--
+    <%--
         Structured data for use by search engines.
         See https://developers.google.com/search/docs/guides/intro-structured-data
-    -->
+    --%>
     <script type="application/ld+json">
       {
         "@context": "http://schema.org",

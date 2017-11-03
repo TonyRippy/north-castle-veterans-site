@@ -25,10 +25,10 @@ UserService userService = UserServiceFactory.getUserService();
         padding-right: 20px;
       }
     </style>
-    <!--
+    <%--
         Structured data for use by search engines.
         See https://developers.google.com/search/docs/guides/intro-structured-data
-    -->
+    --%>
     <script type="application/ld+json">
       {
         "@context": "http://schema.org",
@@ -84,7 +84,6 @@ UserService userService = UserServiceFactory.getUserService();
         <a href="http://www.usafa.af.mil/News/Photos/igphoto/2001562927/">Background photo</a>
         provided by the
         <a href="http://www.usafa.af.mil/">United States Air Force Academy</a>.
-        <!-- TODO: Is there an explicit license for image? -->
       </div>
     </div>
   </body>
