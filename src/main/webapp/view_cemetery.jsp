@@ -38,6 +38,38 @@ UserService userService = UserServiceFactory.getUserService();
         width: 90%;
       }
     </style>
+    <!--
+        Structured data for use by search engines.
+        See https://developers.google.com/search/docs/guides/intro-structured-data
+    -->
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@id": "https://northcastleveterans.org/cemeteries",
+            "name": "Cemeteries"
+          }
+        },{
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@id": "https://northcastleveterans.org/cemetery/<%= selected.id %>",
+            "name": "<%= selected.name %>"
+          }
+        }]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org/",
+        "@type": "Place",
+        "name": "<%= selected.name %>"
+      }
+    </script>
   </head>
   <body>
     <div id="sl-container" class="container_12">

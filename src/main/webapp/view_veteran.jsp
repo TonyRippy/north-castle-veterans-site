@@ -49,6 +49,71 @@ UserService userService = UserServiceFactory.getUserService();
         width: 90%;
       }
     </style>
+    <!--
+        Structured data for use by search engines.
+        See https://developers.google.com/search/docs/guides/intro-structured-data
+    -->
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@id": "https://northcastleveterans.org/cemeteries",
+            "name": "Cemeteries"
+          }
+        },{
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@id": "https://northcastleveterans.org/cemetery/<%= cemetery.id %>",
+            "name": "<%= cemetery.name %>"
+          }
+        },{
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@id": "https://northcastleveterans.org/veterans",
+            "name": "Veterans"
+          }
+        },{
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@id": "https://northcastleveterans.org/veteran/<%= cemetery.id %>/<%= selected.id %>",
+            "name": "<%= selected.lastName %>, <%= selected.firstName %><%= selected.middleName == null ? "" : " " + selected.middleName %>"
+          }
+        }]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org/"
+        , "@type": "Person"
+        , "givenName": "<%= selected.firstName %>"
+        , "familyName": "<%= selected.lastName %>"
+        <% if (selected.middleName != null) { %>
+          , "additionalName": "<%= selected.middleName %>"
+        <% } %>
+        <% if (selected.sex != null) { %>
+          , "gender": "http://schema.org/<%= selected.sex %>"
+        <% } %>
+        <% if (selected.birthDate != null) { %>
+          , "birthDate": "<%= selected.birthDate %>"
+        <% } %>
+        <% if (selected.birthLocation != null) { %>
+          , "birthPlace": "<%= selected.birthLocation %>"
+        <% } %>
+        <% if (selected.deathDate != null) { %>
+          , "deathDate": "<%= selected.deathDate %>"
+        <% } %>
+        <% if (selected.deathLocation != null) { %>
+          , "deathPlace": "<%= selected.deathLocation %>"
+        <% } %>
+      }
+    </script>
   </head>
   <body>
     <div id="sl-container" class="container_12">
