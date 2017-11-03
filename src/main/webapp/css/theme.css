@@ -53,7 +53,7 @@ body {
 }
 #sl-menu li a:visited {
   text-decoration: inherit;
-  color: inherit;
+  color: #fff;
 }
 #sl-menu li a:hover {
   text-decoration: inherit;
