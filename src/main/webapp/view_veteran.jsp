@@ -2,6 +2,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="myapp.Cemetery" %>
 <%@ page import="myapp.Veteran" %>
+<%@ page import="com.google.appengine.api.users.UserService" %>
+<%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
 
 <%
 Veteran selected = Veteran.forPath(request.getPathInfo());
@@ -18,6 +20,7 @@ if (!cemetery.readFromDatastore()) {
   response.sendError(HttpServletResponse.SC_NOT_FOUND);
   return;
 }
+UserService userService = UserServiceFactory.getUserService();
 %>
 
 <!doctype html>
@@ -63,7 +66,7 @@ if (!cemetery.readFromDatastore()) {
       </div>
       <div class="clear"></div>
       <div id="sl-content" class="grid_12">
-        <%-- TODO(trippy): Make this appear only if administrator. --%>
+        <% if (userService.isUserLoggedIn() && userService.isUserAdmin()) { %>
         <div id="admin">
           <a href="/__edit__/veteran/<%= selected.cemeteryId %>/">
             Add new record.
@@ -73,6 +76,7 @@ if (!cemetery.readFromDatastore()) {
             Edit this record.
           </a>
         </div>
+        <% } %>
         <div id="sl-navlink">
           <a href="/cemetery/<%= cemetery.id %>"><b>&larr;</b> <%= cemetery.name %></a>
         </div>
