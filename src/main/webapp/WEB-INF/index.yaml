@@ -1,6 +1,7 @@
 indexes:
 
 - kind: Veteran
+  ancestor: yes
   properties:
-    - name: lastName
-    - name: firstName
+  - name: lastName
+  - name: firstName
