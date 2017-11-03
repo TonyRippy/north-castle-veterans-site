@@ -31,6 +31,9 @@ if (!selected.readFromDatastore()) {
         float: right;
         padding-right: 20px;
       }
+      img {
+        width: 90%;
+      }
     </style>
   </head>
   <body>
