@@ -43,12 +43,6 @@
           as a way to contribute back to the community. Over the course of the project
           many other Boy Scouts and volunteers gave their time to help edit the available
           information about veterans, take pictures, and enter the information online.
-          This includes, but is not limited to:
-          <ul>
-            <li><em>Scout 1</em></li>
-            <li><em>Scout 2</em></li>
-            <li><em>...</em></li>
-          </ul>
         </p><p>
           We would also like to thank Tony Rippy, who provided technical guidance for the project
           and helped with the implementation of the web site itself.
