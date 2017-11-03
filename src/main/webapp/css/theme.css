@@ -46,25 +46,25 @@ body {
   font-weight: bold;
   font-size: 18px;
   font-variant: small-caps;
-  text-decoration: none;
 }
-#sl-menu li a {
-  text-decoration: inherit;
-}
-#sl-menu li a:visited {
-  text-decoration: inherit;
-  color: #fff;
-}
-#sl-menu li a:hover {
-  text-decoration: inherit;
-  color: #fc0;
-}
-#sl-menu .selected {
+#sl-menu li.selected {
   color: #366;
 }
-#sl-menu .disabled {
+#sl-menu li.disabled {
   pointer-events: none;
   cursor: default;
+}
+#sl-menu li a {
+  text-decoration: none;
+  color: inherit;
+}
+#sl-menu li a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+#sl-menu li a:hover {
+  text-decoration: none;
+  color: #fc0;
 }
 
 #sl-navlink {
