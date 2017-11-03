@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
     <servlet>
+      <servlet-name>list-cemeteries</servlet-name>
+      <jsp-file>/list_cemeteries.jsp</jsp-file>
+    </servlet>
+    <servlet>
       <servlet-name>view-cemetery</servlet-name>
       <jsp-file>/view_cemetery.jsp</jsp-file>
     </servlet>
@@ -36,6 +40,10 @@
         <servlet-name>thanks</servlet-name>
         <jsp-file>/thanks.jsp</jsp-file>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>list-cemeteries</servlet-name>
+        <url-pattern>/cemeteries</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>view-cemetery</servlet-name>
         <url-pattern>/cemetery/*</url-pattern>

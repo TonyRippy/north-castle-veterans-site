@@ -1,6 +1,5 @@
 <%-- //[START all]--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="myapp.Cemetery" %>
 <%@ page import="myapp.Veteran" %>
 
 <!doctype html>
@@ -25,13 +24,8 @@
       <div id="sl-menu">
         <ul>
           <li><a href="/">About</a></li>
-          <% for (Cemetery c : Cemetery.listAll()) { %>
-            <li>
-              <a href="/cemetery/<%= c.id %>">
-                <%= c.name %>
-              </a>
-            </li>
-          <% } %>
+          <li><a href="/cemeteries">Cemeteries</a></li>
+          <li class="selected disabled"><a href="/veterans">Veterans</a></li>
           <li><a href="/contact">Contact</a></li>
         </ul>
       </div>

@@ -1,6 +1,5 @@
 <%-- //[START all]--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="myapp.Cemetery" %>
 <%@ page import="myapp.Veteran" %>
 
 <%
@@ -51,15 +50,8 @@ if (!selected.readFromDatastore()) {
       <div id="sl-menu">
         <ul>
           <li><a href="/">About</a></li>
-          <%
-          for (Cemetery c : Cemetery.listAll()) {
-          %>
-            <li <% if(c.id.equals(selected.cemeteryId)) { %> class="selected" <% } %> >
-              <a href="/cemetery/<%= c.id %>">
-                <%= c.name %>
-              </a>
-            </li>
-          <% } %>
+          <li><a href="/cemeteries">Cemeteries</a></li>
+          <li class="selected"><a href="/veterans">Veterans</a></li>
           <li><a href="/contact">Contact</a></li>
         </ul>
       </div>

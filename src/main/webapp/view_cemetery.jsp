@@ -41,13 +41,8 @@ if (!selected.readFromDatastore()) {
       <div id="sl-menu">
         <ul>
           <li><a href="/">About</a></li>
-          <% for (Cemetery c : Cemetery.listAll()) { %>
-            <li <% if(c.id.equals(selected.id)) { %> class="selected disabled" <% } %> >
-              <a href="/cemetery/<%= c.id %>">
-                <%= c.name %>
-              </a>
-            </li>
-          <% } %>
+          <li class="selected"><a href="/cemeteries">Cemeteries</a></li>
+          <li><a href="/veterans">Veterans</a></li>
           <li><a href="/contact">Contact</a></li>
         </ul>
       </div>
