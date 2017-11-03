@@ -1,5 +1,6 @@
 <%-- //[START all]--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="myapp.Cemetery" %>
 <%@ page import="myapp.Veteran" %>
 
 <%
@@ -9,6 +10,11 @@ if (selected == null) {
   return;
 }
 if (!selected.readFromDatastore()) {
+  response.sendError(HttpServletResponse.SC_NOT_FOUND);
+  return;
+}
+Cemetery cemetery = new Cemetery(selected.cemeteryId);
+if (!cemetery.readFromDatastore()) {
   response.sendError(HttpServletResponse.SC_NOT_FOUND);
   return;
 }
@@ -66,6 +72,9 @@ if (!selected.readFromDatastore()) {
           <a href="<%= "/__edit__/veteran" + request.getPathInfo() %>">
             Edit this record.
           </a>
+        </div>
+        <div id="sl-navlink">
+          <a href="/cemetery/<%= cemetery.id %>"><b>&larr;</b> <%= cemetery.name %> Cemetery</a>
         </div>
         <div class="grid_7 alpha">
           <h1>

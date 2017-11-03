@@ -34,7 +34,6 @@ body {
   background-color: rgb(100, 200, 200);
   margin-bottom: 1em;
 }
-
 #sl-menu ul {
   /* float: center; */
   margin: auto;
@@ -51,6 +50,9 @@ body {
 }
 #sl-menu li a {
   text-decoration: inherit;
+}
+#sl-menu li a:visited {
+  text-decoration: inherit;
   color: inherit;
 }
 #sl-menu li a:hover {
@@ -63,6 +65,24 @@ body {
 #sl-menu .disabled {
   pointer-events: none;
   cursor: default;
+}
+
+#sl-navlink {
+  margin-bottom: 10px;
+  color: #333;
+  font-size: smaller;
+}
+#sl-navlink a {
+  text-decoration: none;
+}
+#sl-navlink a:hover {
+  text-decoration: underline;
+}
+#sl-navlink a:visited {
+  color: inherit;
+}
+#sl-navlink b {
+  font-size: larger;
 }
 
 #sl-content {

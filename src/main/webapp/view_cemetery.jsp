@@ -61,6 +61,9 @@ if (!selected.readFromDatastore()) {
             Add new veteran to this cemetery.
           </a>
         </div>
+        <div id="sl-navlink">
+          <a href="/cemeteries"><b>&larr;</b> Back to Cemeteries</a>
+        </div>
         <h1><%= selected.name %></h1>
         <%= selected.description == null ? "" : selected.description %>
         <% if (selected.veterans.size() > 0) { %>
