@@ -28,7 +28,8 @@
         </ul>
       </div>
       <div id="sl-content">
-        If there are any updates or errors to be noted please contact us at northcastleveterans@gmail.com
+        If there are any updates or errors to be noted please contact us at
+        <a href="mailto:northcastleveterans@gmail.com">northcastleveterans@gmail.com</a>.
       </div>
       <div id="sl-bkg-attribution">
         <a href="http://www.usafa.af.mil/News/Photos/igphoto/2001562927/">Background photo</a>
