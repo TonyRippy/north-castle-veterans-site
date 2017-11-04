@@ -23,6 +23,7 @@
       <div id="sl-menu">
         <ul>
           <li class="selected disabled"><a href="/">About</a></li>
+          <li><a href="/pouder">George Pouder</a></li>
           <li><a href="/cemeteries">Cemeteries</a></li>
           <li><a href="/veterans">Veterans</a></li>
           <li><a href="/contact">Contact</a></li>

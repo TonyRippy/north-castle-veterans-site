@@ -21,19 +21,16 @@
       <div id="sl-menu">
         <ul>
           <li><a href="/">About</a></li>
-          <li><a href="/pouder">George Pouder</a></li>
+          <li class="selected disabled"><a href="/pouder">George Pouder</a></li>
           <li><a href="/cemeteries">Cemeteries</a></li>
           <li><a href="/veterans">Veterans</a></li>
-          <li class="selected disabled"><a href="/contact">Contact</a></li>
+          <li><a href="/contact">Contact</a></li>
         </ul>
       </div>
       <div id="sl-content">
-        If there are any updates or errors to be noted please contact us at northcastleveterans@gmail.com
-      </div>
-      <div id="sl-bkg-attribution">
-        <a href="http://www.usafa.af.mil/News/Photos/igphoto/2001562927/">Background photo</a>
-        provided by the
-        <a href="http://www.usafa.af.mil/">United States Air Force Academy</a>.
+        <p>
+        Work in progress.
+        </p>
       </div>
     </div>
   </body>

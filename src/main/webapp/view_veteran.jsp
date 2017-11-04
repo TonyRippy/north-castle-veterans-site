@@ -124,6 +124,7 @@ UserService userService = UserServiceFactory.getUserService();
       <div id="sl-menu">
         <ul>
           <li><a href="/">About</a></li>
+          <li><a href="/pouder">George Pouder</a></li>
           <li><a href="/cemeteries">Cemeteries</a></li>
           <li class="selected"><a href="/veterans">Veterans</a></li>
           <li><a href="/contact">Contact</a></li>
