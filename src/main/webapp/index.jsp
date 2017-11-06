@@ -33,7 +33,7 @@
         <p>
           Welcome to the North Castle Veterans Website Eagle Scout Project!
         </p><p>
-          The site is currently a work in progress and should be completed in Fall 2017.
+          The site is now completed as of Fall 2017.
         </p><p>
           Why this site is in production: Eagle Scout Candidate Jack Skiera wants to contribute to the community by creating a database for veterans that have passed.
           A list of all veterans on the site can be found <a href="/all">here</a>.
